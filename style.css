@@ -140,7 +140,7 @@ nav {
 #hero {
     width: 100%;
     height: 100vh;
-    background-color: #ebeaeaee;
+    background-color: rgb(246, 246, 246);
     background-size: cover;
     position: relative;
 }
