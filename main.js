@@ -1,3 +1,23 @@
+!(function ($) {
+  "use strict";
+  $(window).on("load", function () {
+    if ($("#preloader").length) {
+      $("#preloader").delay(100).fadeOut("slow", function () {
+        $(this).remove();
+      });
+    }
+  });
+  if ($(".typed").length) {
+    var typed_strings = $(".typed").data("typed-items");
+    typed_strings = typed_strings.split(",");
+    new Typed(".typed", {
+      strings: typed_strings,
+      loop: true,
+      typeSpeed: 80,
+      backSpeed: 40,
+      backDelay: 1000,
+    });
+  }
 
   function aos_init() {
     AOS.init({
