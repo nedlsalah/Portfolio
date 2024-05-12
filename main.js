@@ -1,12 +1,7 @@
 !(function ($) {
   "use strict";
-  $(window).on("load", function () {
-    if ($("#preloader").length) {
-      $("#preloader").delay(100).fadeOut("slow", function () {
-        $(this).remove();
-      });
-    }
-  });
+
+  
   if ($(".typed").length) {
     var typed_strings = $(".typed").data("typed-items");
     typed_strings = typed_strings.split(",");
@@ -48,7 +43,10 @@
     loop: true,
     items: 1,
   });
-})(jQuery); 
+})
+
+
+(jQuery); 
 
 
 
