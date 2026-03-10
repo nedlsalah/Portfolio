@@ -1,403 +1,1259 @@
 <!DOCTYPE html>
 <html lang="en">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-61H6E9G3MT"></script>
-<script>
-    function gtag() {
-        dataLayer.push(arguments)
-    }
-    window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "G-61H6E9G3MT");
-</script>
-
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-61H6E9G3MT");</script>
 <head>
-    <meta content="width=device-width,initial-scale=1" name="viewport">
-    <meta name="title" content="NedlSalah | Digital Marketing | Web/Graphic Design | Photography | Elevating Brands through Innovation and Visual Excellence.">
-    <meta name="robots" content="index, follow">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="language" content="English">
-    <meta name="author" content="Nedlsalah">
-    <meta name="copyright" content="Nedlsalah">
-    <meta name="contact" content="salaheddine.nedlouf@gmail.com | +971588546363">
-    <title>NedlSalah | Digital Marketing | Web/Graphic Design | Photography | Elevating Brands through Innovation and Visual Excellence</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-        crossorigin="anonymous">
-    <link href="assets/img/favicon.ico" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="./style.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Digital Marketing Specialist, WordPress Web Developer & Graphic Designer -7+ years in the UAE.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Nedlsalah">
+<title>NEDLSALAH -Digital Marketing · Web Development · Design</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&family=Outfit:wght@200;300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="assets/img/favicon.ico" rel="icon">
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<style>
+/* ─────────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────────── */
+:root {
+  --bg:       #080c0f;
+  --bg2:      #0d1318;
+  --bg3:      #111920;
+  --bg4:      #162028;
+  --em:       #00c896;   /* emerald */
+  --em2:      #00f0b5;   /* bright emerald */
+  --em-dim:   rgba(0,200,150,.08);
+  --em-line:  rgba(0,200,150,.18);
+  --pt:       #e8f0f5;   /* platinum / off-white */
+  --pt2:      #a8bfcc;   /* muted platinum */
+  --pt3:      #5a7382;   /* deep muted */
+  --red:      #ff4d6a;   /* accent pop -used sparingly */
+  --serif:    'Playfair Display', Georgia, serif;
+  --sans:     'Outfit', system-ui, sans-serif;
+  --mono:     'Space Mono', monospace;
+  --r:        cubic-bezier(.4,0,.2,1);
+  --ro:       cubic-bezier(0,0,.2,1);
+}
+
+/* ─────────────────────────────────────────────
+   BASE
+───────────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px;  }
+body {
+  background: var(--bg);
+  color: var(--pt);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* grain overlay */
+body::after {
+  content:'';
+  position:fixed; inset:0; z-index:9998; pointer-events:none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='.028'/%3E%3C/svg%3E");
+  background-size:200px;
+  opacity:.55;
+}
+
+/* selection */
+::selection { background:var(--em); color:var(--bg); }
+
+/* scrollbar */
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:var(--em-line); border-radius:2px; }
+
+/* ─────────────────────────────────────────────
+   CURSOR
+───────────────────────────────────────────── */
+body { cursor: none; }
+#c-dot {
+  position:fixed; width:6px; height:6px;
+  background:var(--em); border-radius:50%;
+  pointer-events:none; z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:width .15s, height .15s, background .2s;
+}
+#c-ring {
+  position:fixed; width:32px; height:32px;
+  border:1px solid var(--em);
+  border-radius:50%;
+  pointer-events:none; z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:width .4s var(--r), height .4s var(--r), opacity .3s, border-color .3s;
+  opacity:.4;
+}
+body.cur-hover #c-dot { width:10px; height:10px; background:var(--em2); }
+body.cur-hover #c-ring { width:52px; height:52px; opacity:.6; border-color:var(--em2); }
+@media(max-width:768px){ #c-dot,#c-ring{display:none} body{cursor:auto} }
+
+/* ─────────────────────────────────────────────
+   AMBIENT
+───────────────────────────────────────────── */
+.ambient {
+  position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+}
+.amb-orb {
+  position:absolute; border-radius:50%;
+  filter:blur(130px); pointer-events:none;
+}
+.amb-1 {
+  width:700px; height:700px;
+  background:radial-gradient(circle, rgba(0,200,150,.055) 0%, transparent 65%);
+  top:-200px; left:-200px;
+  animation: drift-a 24s ease-in-out infinite;
+}
+.amb-2 {
+  width:500px; height:500px;
+  background:radial-gradient(circle, rgba(0,200,150,.03) 0%, transparent 65%);
+  bottom:-150px; right:-100px;
+  animation: drift-b 30s ease-in-out infinite;
+}
+.amb-3 {
+  width:300px; height:300px;
+  background:radial-gradient(circle, rgba(255,77,106,.025) 0%, transparent 65%);
+  top:40%; right:5%;
+  animation: drift-c 18s ease-in-out infinite;
+}
+@keyframes drift-a { 0%,100%{transform:translate(0,0)} 50%{transform:translate(80px,60px)} }
+@keyframes drift-b { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-60px,-40px)} }
+@keyframes drift-c { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,50px)} }
+
+/* ─────────────────────────────────────────────
+   NAVBAR
+───────────────────────────────────────────── */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.5rem 3rem;
+  transition: padding .4s var(--r), background .4s, border-color .4s;
+  border-bottom: 1px solid transparent;
+}
+.nav.stuck {
+  padding: 1rem 3rem;
+  background: rgba(8,12,15,.92);
+  backdrop-filter: blur(24px) saturate(160%);
+  border-bottom-color: var(--em-line);
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.3rem; font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--pt);
+  text-decoration: none;
+  display:flex; align-items:center; gap:10px;
+}
+.nav-logo .dot-em {
+  width:7px; height:7px; border-radius:50%;
+  background:var(--em);
+  display:inline-block;
+  box-shadow:0 0 10px var(--em);
+}
+.nav-menu { display:flex; gap:2rem; list-style:none; }
+.nav-menu a {
+  font-family: var(--mono);
+  font-size:.68rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--pt3);
+  text-decoration:none; position:relative;
+  transition:color .25s;
+}
+.nav-menu a::after {
+  content:''; position:absolute; bottom:-3px; left:0;
+  width:0; height:1px; background:var(--em);
+  transition:width .3s var(--ro);
+}
+.nav-menu a:hover, .nav-menu a.on { color:var(--em); }
+.nav-menu a:hover::after, .nav-menu a.on::after { width:100%; }
+
+.hamburger {
+  display:none; flex-direction:column; gap:5px;
+  background:none; border:none; cursor:none; padding:.3rem;
+}
+.hamburger span {
+  display:block; width:22px; height:1px;
+  background:var(--pt); transition:all .3s var(--r);
+}
+.hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(4px,4px); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(4px,-4px); }
+
+/* ─────────────────────────────────────────────
+   HERO
+───────────────────────────────────────────── */
+#hero {
+  min-height:100svh; display:flex; align-items:center;
+  position:relative; z-index:1;
+  padding:130px 0 90px;
+  overflow:hidden;
+}
+
+/* large decorative letter */
+.hero-deco {
+  position:absolute; right:-2%; top:50%;
+  transform:translateY(-50%);
+  font-family:var(--serif);
+  font-size:clamp(20rem, 38vw, 42rem);
+  font-weight:900; color:transparent;
+  -webkit-text-stroke: 1px rgba(0,200,150,.06);
+  line-height:1; pointer-events:none;
+  user-select:none;
+  letter-spacing:-.05em;
+  animation: float-deco 8s ease-in-out infinite;
+}
+@keyframes float-deco {
+  0%,100%{transform:translateY(-50%) translateX(0)}
+  50%{transform:translateY(-52%) translateX(-12px)}
+}
+
+.hero-inner {
+  max-width:860px;
+  position:relative; z-index:2;
+}
+.hero-kicker {
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:var(--mono);
+  font-size:.68rem; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--em); margin-bottom:1.8rem;
+}
+.kicker-line { width:36px; height:1px; background:var(--em); }
+
+h1.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(4.2rem, 10vw, 8.5rem);
+  font-weight: 900;
+  line-height: .92;
+  letter-spacing: -.02em;
+  color: var(--pt);
+  margin-bottom: .1em;
+}
+h1.hero-headline .italic-em {
+  font-style:italic; font-weight:400;
+  background: linear-gradient(120deg, var(--em), var(--em2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-sub-line {
+  display:flex; align-items:center; gap:14px;
+  margin: 1.6rem 0 1rem;
+}
+.hero-sub-line hr {
+  flex:1; border:none; height:1px;
+  background:linear-gradient(90deg, var(--em-line), transparent);
+}
+.hero-typed-block {
+  font-family: var(--mono);
+  font-size: .82rem; letter-spacing:.1em;
+  color: var(--pt2); white-space:nowrap;
+}
+#typer { color: var(--em2); }
+.tcur {
+  display:inline-block; width:2px; height:.85em;
+  background:var(--em); vertical-align:middle;
+  margin-left:2px; animation:blink .9s infinite;
+}
+@keyframes blink {0%,100%{opacity:1}50%{opacity:0}}
+
+.hero-chips {
+  display:flex; flex-wrap:wrap; gap:.5rem;
+  margin:2rem 0 2.4rem;
+}
+.chip {
+  font-family:var(--mono); font-size:.65rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--pt3);
+  padding:6px 14px;
+  border:1px solid rgba(255,255,255,.07);
+  background: rgba(255,255,255,.025);
+  transition:all .25s var(--r);
+}
+.chip:hover {
+  color:var(--em); border-color:var(--em-line);
+  background:var(--em-dim);
+}
+
+.hero-desc {
+  font-size:1.07rem; color:var(--pt2); font-weight:300;
+  line-height:1.85; max-width:580px; margin-bottom:2.6rem;
+}
+
+.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+
+/* primary button -chamfered corners */
+.btn-em {
+  position:relative; display:inline-flex; align-items:center; gap:9px;
+  padding:13px 34px;
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.18em;
+  text-transform:uppercase; text-decoration:none;
+  color:var(--bg); background:var(--em);
+  border:none; cursor:none;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+  transition:background .25s, box-shadow .25s, transform .2s;
+}
+.btn-em:hover {
+  background:var(--em2); color:var(--bg);
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(0,200,150,.22);
+}
+/* outline button */
+.btn-out {
+  display:inline-flex; align-items:center; gap:9px;
+  padding:13px 34px;
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.18em;
+  text-transform:uppercase; text-decoration:none;
+  color:var(--em); background:transparent;
+  border:1px solid var(--em-line);
+  cursor:none;
+  transition:all .25s var(--r);
+}
+.btn-out:hover {
+  border-color:var(--em); background:var(--em-dim);
+  color:var(--em2); transform:translateY(-2px);
+}
+
+.hero-socials {
+  display:flex; gap:1rem; margin-top:3rem;
+}
+.soc-btn {
+  width:42px; height:42px;
+  border:1px solid rgba(255,255,255,.08);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--pt3); font-size:.95rem;
+  text-decoration:none;
+  transition:all .25s var(--r);
+}
+.soc-btn:hover {
+  border-color:var(--em); color:var(--em);
+  background:var(--em-dim);
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px rgba(0,200,150,.1);
+}
+
+/* scroll pill */
+.scroll-pill {
+  position:absolute; bottom:2.5rem; left:50%;
+  transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--pt3);
+  animation:bob 2.8s ease-in-out infinite;
+  z-index:2;
+}
+.scroll-pill::after {
+  content:''; width:1px; height:38px;
+  background:linear-gradient(to bottom, var(--em), transparent);
+}
+@keyframes bob {
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(7px)}
+}
+
+/* ─────────────────────────────────────────────
+   SECTION BASE
+───────────────────────────────────────────── */
+section { padding:110px 0; position:relative; z-index:1; }
+.s-alt { background:var(--bg2); }
+
+.s-eyebrow {
+  display:inline-flex; align-items:center; gap:12px;
+  font-family:var(--mono); font-size:.65rem; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--em);
+  margin-bottom:1.2rem;
+}
+.s-eyebrow i { font-size:.6rem; }
+h2.s-heading {
+  font-family:var(--serif);
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  font-weight:900; line-height:1.05;
+  color:var(--pt); margin-bottom:1rem;
+}
+h2.s-heading em { font-style:italic; color:var(--em); font-weight:400; }
+.s-rule {
+  width:48px; height:2px; margin:1.2rem 0 1.8rem;
+  background:linear-gradient(90deg,var(--em),transparent);
+}
+.s-lede {
+  font-size:.98rem; color:var(--pt2); font-weight:300;
+  line-height:1.8; max-width:560px; margin-bottom:3.5rem;
+}
+
+/* ─────────────────────────────────────────────
+   SERVICES
+───────────────────────────────────────────── */
+.grid-services {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--em-line);
+  border:1px solid var(--em-line);
+}
+.svc {
+  background:var(--bg2);
+  padding:38px 32px;
+  position:relative; overflow:hidden;
+  transition:background .3s var(--r);
+}
+.svc::before {
+  content:''; position:absolute;
+  top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,var(--em),var(--em2));
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .45s var(--ro);
+}
+.svc:hover { background:var(--bg3); }
+.svc:hover::before { transform:scaleX(1); }
+.svc-num {
+  font-family:var(--serif);
+  font-size:4rem; font-weight:900;
+  color:rgba(0,200,150,.06);
+  line-height:1; margin-bottom:1.2rem;
+  transition:color .3s;
+}
+.svc:hover .svc-num { color:rgba(0,200,150,.1); }
+.svc-icon {
+  width:50px; height:50px; margin-bottom:1.3rem;
+  border:1px solid var(--em-line);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--em); font-size:1.1rem;
+  transition:all .3s;
+}
+.svc:hover .svc-icon {
+  background:var(--em-dim); border-color:var(--em);
+}
+.svc-title {
+  font-family:var(--serif);
+  font-size:1.35rem; font-weight:500;
+  color:var(--pt); margin-bottom:.6rem; line-height:1.2;
+}
+.svc-body {
+  font-size:.88rem; color:var(--pt2); line-height:1.75;
+  margin-bottom:1.3rem; font-weight:300;
+}
+.svc-list { list-style:none; }
+.svc-list li {
+  font-size:.8rem; color:var(--pt3);
+  padding:4px 0 4px 16px; position:relative;
+  border-bottom:1px solid rgba(0,200,150,.05);
+  font-weight:300;
+}
+.svc-list li:last-child { border:none; }
+.svc-list li::before {
+  content:''; position:absolute; left:0; top:11px;
+  width:8px; height:1px; background:var(--em);
+}
+
+/* ─────────────────────────────────────────────
+   ABOUT -split editorial layout
+───────────────────────────────────────────── */
+.about-split {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:5rem; align-items:start;
+}
+.about-left { position:sticky; top:110px; }
+.about-big-initial {
+  font-family:var(--serif);
+  font-size:clamp(7rem,14vw,12rem);
+  font-weight:900; line-height:.85;
+  color:transparent;
+  -webkit-text-stroke:1px var(--em-line);
+  margin-bottom:.5rem;
+  display:block;
+  transition:color .4s;
+}
+.about-big-initial:hover {
+  color:var(--em-dim);
+}
+.about-tagline {
+  font-family:var(--serif);
+  font-size:1.6rem; font-weight:400; font-style:italic;
+  color:var(--pt); line-height:1.5;
+  margin-bottom:2rem;
+  padding-left:1.4rem;
+  border-left:2px solid var(--em);
+}
+.stat-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:1px;
+  background:var(--em-line); border:1px solid var(--em-line);
+  margin-top:2rem;
+}
+.stat-cell {
+  background:var(--bg2); padding:22px 18px;
+  transition:background .3s;
+}
+.stat-cell:hover { background:var(--bg3); }
+.stat-n {
+  font-family:var(--serif);
+  font-size:2.6rem; font-weight:900;
+  color:var(--em); line-height:1;
+}
+.stat-l {
+  font-family:var(--mono); font-size:.62rem;
+  letter-spacing:.16em; color:var(--pt3);
+  text-transform:uppercase; margin-top:2px;
+}
+
+.about-right p {
+  font-size:.97rem; color:var(--pt2);
+  line-height:1.88; font-weight:300;
+  margin-bottom:1.4rem;
+}
+.about-right p strong { color:var(--pt); font-weight:500; }
+.tag-cloud {
+  display:flex; flex-wrap:wrap; gap:.4rem; margin:2rem 0;
+}
+.tag {
+  font-family:var(--mono); font-size:.63rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--em);
+  padding:5px 11px; border:1px solid var(--em-line);
+  transition:all .2s;
+}
+.tag:hover { background:var(--em-dim); border-color:var(--em); }
+
+.info-pairs {
+  display:grid; grid-template-columns:1fr 1fr; gap:1rem;
+  margin-top:2rem; padding-top:2rem;
+  border-top:1px solid var(--em-line);
+}
+.ip-k {
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--em); margin-bottom:3px;
+}
+.ip-v { font-size:.9rem; color:var(--pt); font-weight:400; }
+
+/* ─────────────────────────────────────────────
+   EXPERIENCE -timeline
+───────────────────────────────────────────── */
+.xp-wrap { max-width:800px; margin:0 auto; }
+.xp-item {
+  display:grid; grid-template-columns:28px 1fr;
+  gap:0 2rem; margin-bottom:.5rem;
+}
+.xp-rail {
+  display:flex; flex-direction:column; align-items:center; padding-top:8px;
+}
+.xp-dot {
+  width:9px; height:9px; border-radius:50%;
+  border:1px solid var(--em); background:var(--bg);
+  flex-shrink:0; position:relative; z-index:1;
+  transition:background .3s;
+}
+.xp-item:hover .xp-dot { background:var(--em); box-shadow:0 0 12px var(--em); }
+.xp-rail-line { flex:1; width:1px; background:var(--em-line); margin-top:4px; }
+
+.xp-card {
+  background:var(--bg2); border:1px solid rgba(255,255,255,.05);
+  border-left:none; padding:28px 30px;
+  margin-bottom:1.4rem; position:relative;
+  transition:background .3s, border-color .3s;
+  overflow:hidden;
+}
+.xp-card::after {
+  content:''; position:absolute; top:0; left:0;
+  width:3px; height:0; background:var(--em);
+  transition:height .4s var(--ro);
+}
+.xp-item:hover .xp-card { background:var(--bg3); border-color:var(--em-line); }
+.xp-item:hover .xp-card::after { height:100%; }
+
+.xp-role {
+  font-family:var(--serif);
+  font-size:1.15rem; font-weight:500;
+  color:var(--pt); margin-bottom:1rem;
+}
+.xp-list { list-style:none; }
+.xp-list li {
+  font-size:.87rem; color:var(--pt2); font-weight:300;
+  line-height:1.75; padding:4px 0 4px 18px; position:relative;
+}
+.xp-list li::before {
+  content:''; position:absolute; left:0; top:12px;
+  width:8px; height:1px; background:var(--em);
+}
+
+/* ─────────────────────────────────────────────
+   SKILLS -mosaic
+───────────────────────────────────────────── */
+.sk-grid {
+  display:flex; flex-wrap:wrap; gap:.4rem;
+}
+.sk-pill {
+  font-family:var(--mono);
+  font-size:.68rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--pt3);
+  padding:9px 16px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.02);
+  transition:all .22s var(--r); cursor:default;
+}
+.sk-pill:hover {
+  color:var(--em2); border-color:var(--em);
+  background:var(--em-dim);
+  transform:translateY(-2px);
+}
+.sk-pill.hi {
+  color:var(--em); border-color:var(--em-line);
+  background:var(--em-dim);
+}
+
+/* ─────────────────────────────────────────────
+   CERTIFICATIONS
+───────────────────────────────────────────── */
+.cert-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:1px; background:var(--em-line);
+  border:1px solid var(--em-line);
+  max-width:980px; margin:0 auto;
+}
+.cert-item {
+  background:var(--bg2);
+  padding:26px 24px;
+  display:flex; align-items:flex-start; gap:14px;
+  transition:background .3s;
+}
+.cert-item:hover { background:var(--bg3); }
+.cert-ico {
+  width:44px; height:44px; flex-shrink:0;
+  border:1px solid var(--em-line);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--em); font-size:1.05rem;
+  transition:border-color .3s, background .3s;
+}
+.cert-item:hover .cert-ico { border-color:var(--em); background:var(--em-dim); }
+.cert-t { font-size:.92rem; font-weight:500; color:var(--pt); margin-bottom:4px; }
+.cert-m { font-family:var(--mono); font-size:.65rem; letter-spacing:.1em; color:var(--em); }
+
+/* ─────────────────────────────────────────────
+   CTA / HIRE
+───────────────────────────────────────────── */
+.cta-panel {
+  max-width:840px; margin:0 auto;
+  border:1px solid var(--em-line);
+  background:var(--bg2);
+  padding:72px 64px;
+  text-align:center; position:relative; overflow:hidden;
+}
+/* giant watermark */
+.cta-panel::before {
+  content:'N';
+  position:absolute; bottom:-10%; right:-5%;
+  font-family:var(--serif); font-size:28rem; font-weight:900;
+  color:rgba(0,200,150,.025); line-height:1;
+  pointer-events:none; user-select:none;
+}
+/* top accent */
+.cta-panel::after {
+  content:''; position:absolute;
+  top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, var(--em), var(--em2), transparent);
+}
+.cta-h {
+  font-family:var(--serif);
+  font-size:clamp(2rem,4.5vw,3.2rem);
+  font-weight:900; line-height:1.1;
+  color:var(--pt); margin-bottom:1rem;
+}
+.cta-h em { font-style:italic; color:var(--em); font-weight:400; }
+.cta-p {
+  font-size:.97rem; color:var(--pt2); font-weight:300;
+  line-height:1.8; max-width:540px; margin:0 auto 2.5rem;
+}
+.cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.cta-trust {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:1.8rem;
+  margin-top:2.5rem; padding-top:2rem;
+  border-top:1px solid var(--em-line);
+}
+.trust-item {
+  display:flex; align-items:center; gap:7px;
+  font-family:var(--mono); font-size:.63rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--pt3);
+}
+.trust-item i { color:var(--em); font-size:.65rem; }
+
+/* ─────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────── */
+footer {
+  background:var(--bg); border-top:1px solid var(--em-line);
+  padding:52px 0 28px; position:relative; z-index:1;
+}
+.ft-inner {
+  display:flex; flex-direction:column;
+  align-items:center; text-align:center;
+}
+.ft-wordmark {
+  font-family:var(--serif);
+  font-size:2rem; font-weight:900; letter-spacing:.1em;
+  color:var(--pt); margin-bottom:.4rem;
+}
+.ft-wordmark span { color:var(--em); }
+.ft-sub {
+  font-family:var(--mono); font-size:.63rem; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--pt3); margin-bottom:1.8rem;
+}
+.ft-socials { display:flex; gap:.9rem; margin-bottom:2rem; }
+.ft-socials a {
+  width:40px; height:40px;
+  border:1px solid rgba(255,255,255,.07);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--pt3); font-size:.9rem;
+  text-decoration:none; transition:all .25s;
+}
+.ft-socials a:hover {
+  color:var(--em); border-color:var(--em);
+  background:var(--em-dim); transform:translateY(-3px);
+}
+.ft-copy {
+  font-family:var(--mono); font-size:.6rem; letter-spacing:.16em;
+  text-transform:uppercase; color:rgba(90,115,130,.45);
+  padding-top:1.5rem; width:100%;
+  border-top:1px solid rgba(0,200,150,.06);
+}
+
+/* ─────────────────────────────────────────────
+   BACK TO TOP
+───────────────────────────────────────────── */
+.btt {
+  position:fixed; bottom:2rem; right:2rem; z-index:500;
+  width:44px; height:44px;
+  border:1px solid var(--em-line);
+  background:rgba(8,12,15,.85); backdrop-filter:blur(12px);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--em); font-size:.85rem;
+  text-decoration:none; cursor:none;
+  opacity:0; pointer-events:none;
+  transition:all .3s var(--r);
+}
+.btt.show { opacity:1; pointer-events:all; }
+.btt:hover { background:var(--em-dim); border-color:var(--em); transform:translateY(-3px); }
+
+/* ─────────────────────────────────────────────
+   REVEAL
+───────────────────────────────────────────── */
+.reveal {
+  opacity:0; transform:translateY(32px);
+  transition:opacity .75s var(--ro), transform .75s var(--ro);
+}
+.reveal.in { opacity:1; transform:translateY(0); }
+.reveal-l { opacity:0; transform:translateX(-32px); transition:opacity .75s var(--ro), transform .75s var(--ro); }
+.reveal-l.in { opacity:1; transform:translateX(0); }
+.reveal-r { opacity:0; transform:translateX(32px); transition:opacity .75s var(--ro), transform .75s var(--ro); }
+.reveal-r.in { opacity:1; transform:translateX(0); }
+[data-delay="1"] { transition-delay:.1s }
+[data-delay="2"] { transition-delay:.2s }
+[data-delay="3"] { transition-delay:.3s }
+[data-delay="4"] { transition-delay:.4s }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media(max-width:1024px){
+  .grid-services { grid-template-columns:repeat(2,1fr); }
+  .about-split { grid-template-columns:1fr; gap:3rem; }
+  .about-left { position:static; }
+  .about-big-initial { font-size:8rem; }
+  .nav { padding:1.2rem 2rem; }
+  .nav.stuck { padding:.9rem 2rem; }
+}
+@media(max-width:768px){
+  .nav-menu { display:none; flex-direction:column; gap:1.5rem;
+    position:absolute; top:100%; left:0; right:0;
+    background:rgba(8,12,15,.97); padding:2rem 2.5rem;
+    border-bottom:1px solid var(--em-line); }
+  .nav-menu.open { display:flex; }
+  .hamburger { display:flex; }
+  .grid-services { grid-template-columns:1fr; }
+  .hero-deco { display:none; }
+  section { padding:75px 0; }
+  .cta-panel { padding:45px 28px; }
+  .cta-panel::before { display:none; }
+  .info-pairs { grid-template-columns:1fr; }
+  h1.hero-headline { font-size:clamp(3.2rem,13vw,5.5rem); }
+}
+@media(max-width:480px){
+  .hero-actions { flex-direction:column; align-items:flex-start; }
+  .btn-em,.btn-out { width:100%; justify-content:center; }
+  .stat-row { grid-template-columns:1fr; }
+  .cta-btns { flex-direction:column; align-items:center; }
+  .nav { padding:1rem 1.2rem; }
+}
+</style>
 </head>
+<body>
 
-<body oncontextmenu="return!1" class="unselectable=" yes onselectstart="return!1">
-    <nav class="navbar sticky-top navbar-light navbar-expand-md bg-light justify-content-center"><a href="#hero" class="scroll navbar-brand d-flex w-50 mr-auto"><img src="./assets/img/logo.webp" alt="logo of nedlsalah"></a> <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3"><span class="navbar-toggler-icon"></span></button>
-        <div
-            class="navbar-collapse collapse w-100" id="collapsingNavbar3">
-            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-                <li class="nav-item active"><a href="#hero" class="nav-link scroll">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link scroll">About</a></li>
-                <li class="nav-item"><a href="#services" class="nav-link scroll">Skills</a></li>
-                <li class="nav-item"><a href="#portfolio" class="nav-link scroll">Portfolio</a></li>
-                <li class="nav-item"><a href="#Videos" class="nav-link scroll">Videos</a></li>
-            </ul>
-            </div>
-    </nav>
-    <section id="hero" class="d-flex flex-column justify-content-center">
-        <div class="container" data-aos="zoom-in" data-aos-delay="3">
-            <h1>Salah Eddine Nedlouf</h1>
-            <p><span class="typed" data-typed-items="Digital Marketer, Junior Front-End Developer, Graphic Designer, Web Designer, Photographer"></span></p>
-            <p>Digital Marketing Specialist and Social Media Manager. With over 5 years of experience in strategic campaigns, creative content, web development, and captivating photography, I am passionate about driving business growth both online and offline.</p>
-            <div
-                class="social-links"><a href="https://bit.ly/34opvUe" class="instagram" target="_blank"><i class="fab fa-instagram-square"></i></a> <a href="https://bit.ly/3oobM7Q" class="behance" target="_blank"><i class="fab fa-behance-square"></i></a> <a href="https://www.linkedin.com/in/nedsalahed/"
-                    class="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a> <a href="https://bit.ly/34ojbfp" class="500px" target="_blank"><i class="fab fa-500px"></i></a></div>
+<!-- Cursor -->
+<div id="c-dot"></div>
+<div id="c-ring"></div>
+
+<!-- Ambient -->
+<div class="ambient">
+  <div class="amb-orb amb-1"></div>
+  <div class="amb-orb amb-2"></div>
+  <div class="amb-orb amb-3"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-logo">
+    <span class="dot-em"></span>
+    NEDLSALAH
+  </a>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#hero" class="on">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Credentials</a></li>
+    <li><a href="#hire">Hire Me</a></li>
+  </ul>
+  <button class="hamburger" id="hbg" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-deco">N</div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-kicker">
+        <span class="kicker-line"></span>
+        Abu Dhabi, UAE &nbsp;·&nbsp; Available for Projects
+      </div>
+      <h1 class="hero-headline">
+        NEDL<br><span class="italic-em">SALAH</span>
+      </h1>
+      <div class="hero-sub-line">
+        <hr>
+        <div class="hero-typed-block">// <span id="typer"></span><span class="tcur"></span></div>
+      </div>
+      <div class="hero-chips">
+        <span class="chip">Digital Marketing</span>
+        <span class="chip">WordPress Dev</span>
+        <span class="chip">Graphic Design</span>
+        <span class="chip">Photography</span>
+        <span class="chip">Short-Form Video</span>
+        <span class="chip">Social Media</span>
+      </div>
+      <p class="hero-desc">I help businesses grow online through smart marketing, high-quality design, and content that converts -7+ years of experience, end-to-end, one professional.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-em"><i class="fas fa-briefcase"></i> What I Offer</a>
+        <a href="#hire" class="btn-out"><i class="fas fa-paper-plane"></i> Work With Me</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://www.instagram.com/nedlsalah" class="soc-btn" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.behance.net/nedlsalah" class="soc-btn" target="_blank" title="Behance"><i class="fab fa-behance"></i></a>
+        <a href="https://www.linkedin.com/in/nedsalahed/" class="soc-btn" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://500px.com/nedlsalah" class="soc-btn" target="_blank" title="500px"><i class="fab fa-500px"></i></a>
+        <a href="https://linktr.ee/nedlsalah" class="soc-btn" target="_blank" title="All Links"><i class="fas fa-link"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-pill">Scroll</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="s-alt">
+  <div class="container">
+    <div class="reveal">
+      <div class="s-eyebrow"><i class="fas fa-circle-dot"></i> Services</div>
+      <h2 class="s-heading">What I <em>Do</em></h2>
+      <div class="s-rule"></div>
+      <p class="s-lede">Full-service digital expertise -strategy, design, development, and content under one roof.</p>
+    </div>
+    <div class="grid-services reveal">
+
+      <div class="svc">
+        <div class="svc-num">01</div>
+        <div class="svc-icon"><i class="fas fa-bullseye"></i></div>
+        <h3 class="svc-title">Digital Marketing &amp; Paid Ads</h3>
+        <p class="svc-body">Data-driven campaigns that reach the right audience and convert. Full funnel -strategy to reporting.</p>
+        <ul class="svc-list">
+          <li>Meta Ads -Facebook &amp; Instagram</li>
+          <li>Google Ads &amp; Search campaigns</li>
+          <li>Content planning &amp; calendar</li>
+          <li>Campaign reporting &amp; optimisation</li>
+          <li>Email marketing -Mailchimp</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <div class="svc-num">02</div>
+        <div class="svc-icon"><i class="fab fa-wordpress"></i></div>
+        <h3 class="svc-title">WordPress Development</h3>
+        <p class="svc-body">Fast, mobile-friendly websites built to your brand -no template bloat, no compromise.</p>
+        <ul class="svc-list">
+          <li>Business &amp; portfolio websites</li>
+          <li>WooCommerce e-commerce stores</li>
+          <li>Landing &amp; lead capture pages</li>
+          <li>Maintenance &amp; updates</li>
+          <li>SEO-friendly &amp; speed-optimised</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <div class="svc-num">03</div>
+        <div class="svc-icon"><i class="fas fa-pen-ruler"></i></div>
+        <h3 class="svc-title">Graphic Design &amp; Branding</h3>
+        <p class="svc-body">Visual identity that makes your brand impossible to ignore -consistent, memorable, built to last.</p>
+        <ul class="svc-list">
+          <li>Logo &amp; brand identity design</li>
+          <li>Social media graphics &amp; templates</li>
+          <li>Flyers, posters &amp; print</li>
+          <li>Brand guidelines &amp; style systems</li>
+          <li>Photoshop, Illustrator &amp; Canva</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <div class="svc-num">04</div>
+        <div class="svc-icon"><i class="fas fa-camera"></i></div>
+        <h3 class="svc-title">Photography &amp; Short-Form Video</h3>
+        <p class="svc-body">Content that stops the scroll -Reels, product photos, and event content built for Instagram &amp; TikTok.</p>
+        <ul class="svc-list">
+          <li>Instagram Reels &amp; TikTok videos</li>
+          <li>Product &amp; food photography</li>
+          <li>Event &amp; brand photography</li>
+          <li>Video editing &amp; colour grading</li>
+          <li>Portrait &amp; lifestyle photography</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <div class="svc-num">05</div>
+        <div class="svc-icon"><i class="fas fa-hashtag"></i></div>
+        <h3 class="svc-title">Social Media Management</h3>
+        <p class="svc-body">Consistent, on-brand presence without the hassle. I handle everything so you focus on business.</p>
+        <ul class="svc-list">
+          <li>Multi-platform content creation</li>
+          <li>Posting schedules &amp; community</li>
+          <li>Audience growth strategies</li>
+          <li>Monthly performance reports</li>
+          <li>Instagram, Facebook, LinkedIn &amp; more</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <div class="svc-num">06</div>
+        <div class="svc-icon"><i class="fas fa-pencil"></i></div>
+        <h3 class="svc-title">Content &amp; Copywriting</h3>
+        <p class="svc-body">Words that work. Website copy, captions, and product descriptions that connect and drive action.</p>
+        <ul class="svc-list">
+          <li>Website &amp; landing page copy</li>
+          <li>Social media captions</li>
+          <li>Product descriptions</li>
+          <li>Articles &amp; blog posts</li>
+          <li>Arabic, English &amp; French</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-split">
+      <div class="about-left reveal-l">
+        <div class="s-eyebrow"><i class="fas fa-circle-dot"></i> About</div>
+        <span class="about-big-initial">N</span>
+        <blockquote class="about-tagline">"No handoffs. No gaps. One reliable professional -strategy to delivery."</blockquote>
+        <div class="stat-row">
+          <div class="stat-cell"><div class="stat-n">7+</div><div class="stat-l">Years Experience</div></div>
+          <div class="stat-cell"><div class="stat-n">UAE</div><div class="stat-l">Abu Dhabi Based</div></div>
+          <div class="stat-cell"><div class="stat-n">6</div><div class="stat-l">Core Services</div></div>
+          <div class="stat-cell"><div class="stat-n">3</div><div class="stat-l">Languages</div></div>
         </div>
-    </section>
-    <main id="main">
-        <section id="about" class="about jumbotron-fluid text-center">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2>About</h2>
-                    <div>
-                        <h5>Digital Marketer | Graphic and Web Designer | Photographer</h5><a href="https://wa.me/+971588546363" target="_blank">+971 58 854 6363</a> | <a href="mailto: salaheddine.nedlouf@gmail.com" target="_blank">salaheddine.nedlouf@gmail.com</a>
-                        <p>I am a highly skilled Digital Marketing Specialist and Social Media Manager with a proven track record of success in driving brand awareness and increasing online engagement. I specialize in creating and executing strategic campaigns
-                            that connect with target audiences and deliver measurable results. With expertise in content creation, social media management, web development, and photography, I have a holistic understanding of the digital marketing landscape.
-                            I thrive in dynamic settings and enjoy collaborating with cross-functional teams to achieve remarkable outcomes.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="services" class="services">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2>Skills</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-5 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><img src="./assets/img/services/programming-tech.webp" alt="icon writing-translation"></div>
-                            <h4><a>Digital Marketing</a></h4>
-                            <p>Manage and optimize social media presence across platforms (Instagram, Facebook, etc.). Design and manage effective Google Ads and Facebook Ads campaigns. Create engaging content (graphics, posts, stories) that drives results.
-                                Offer website design and development services. Implement SEO best practices to improve organic search ranking.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><img src="./assets/img/services/graphic-design.webp" alt="icon graphic-design"></div>
-                            <h4><a>Graphic Design</a></h4>
-                            <p>Design logos, branding materials, marketing collateral, and social media graphics. Develop website UI/UX designs and landing pages. Offer expertise in Photoshop, Illustrator, and other design software. Ensure brand consistency
-                                across all design elements. Cater to specific aesthetic preferences of clients.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="icon-box">
-                            <div class="icon"><img src="./assets/img/services/video-photography.webp" alt="icon video-photography"></div>
-                            <h4><a>Video & Photography</a></h4>
-                            <p>Imaging and Video Capture. Video Editing (Expertly refining videos for seamless viewing, including cutting, trimming, and audio syncing). Portrait and Image Enhancement. Photo Composite and Manipulation (Creating compelling
-                                compositions through skilled image manipulation).</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><img src="./assets/img/services/writing-translation.webp" alt="icon writing-translation"></div>
-                            <h4><a>Writing & Translation</a></h4>
-                            <p>Website Content: Engaging content for your site. Articles & Blog Posts. Social Media Copy: Captivating posts for your platforms. Product Descriptions: Persuasive descriptions for your products. Translation.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="portfolio" class="portfolio section-bg">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2>Portfolio</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-                        <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-dev">Dev</li>
-                            <li data-filter=".filter-design">Design</li>
-                            <li data-filter=".filter-logo">Logo</li>
-                            <li data-filter=".filter-social">Social Media</li>
-                            <li data-filter=".filter-photography">Photography</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-social">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-27.jpg" class="img-fluid" alt="Social Media">
-                            <div class="portfolio-info">
-                                <h4>Social Media</h4>
-                                <p>social</p>
-                                <div class="portfolio-links"><a href="https://www.behance.net/gallery/191400347/Social-Media" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-logo">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-7.webp" class="img-fluid" alt="logo design beni mellal by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>Beni Mellal - Morocco / City Logo Design</h4>
-                                <p>Logo</p>
-                                <div class="portfolio-links"><a href="https://www.behance.net/gallery/116557797/Beni-Mellal-Morocco-City-Logo-Design" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-design">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-28.jpg" class="img-fluid" alt="Flyers">
-                            <div class="portfolio-info">
-                                <h4>Flyers</h4>
-                                <p>Design</p>
-                                <div class="portfolio-links"><a href="https://www.behance.net/gallery/191397747/Eye-Catching-Flyers" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-photography">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-29.jpg" class="img-fluid" alt="Flyers">
-                            <div class="portfolio-info">
-                                <h4>Bakery Photoshoot</h4>
-                                <p>Photography</p>
-                                <div class="portfolio-links"><a href="https://photos.app.goo.gl/f8qM2g5F6qZL3vEi8" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-dev">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-1.webp" class="img-fluid" alt="netmoon website WordPress">
-                            <div class="portfolio-info">
-                                <h4>Netmoon - WordPress</h4>
-                                <p>Dev</p>
-                                <div class="portfolio-links"><a href="https://www.behance.net/gallery/103232727/Netmoon-%28WordPress%29" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-design">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-2.webp" class="img-fluid" alt="figma logo personal portfolio ui ux nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>Personal Portfolio Website<br>Template | UI/UX</h4>
-                                <p>Design</p>
-                                <div class="portfolio-links"><a href="https://www.behance.net/gallery/114434045/Personal-Portfolio-Website-Template-UIUX" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-photography">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-15.webp" class="img-fluid" alt="photography vol.1 by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>Vol.1</h4>
-                                <p>PHOTOGRAPHY</p>
-                                <div class="portfolio-links"><a href="https://www.instagram.com/p/CPG7xL0Df9T" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-logo">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-3.webp" class="img-fluid" alt="logo nedlsalah sn">
-                            <div class="portfolio-info">
-                                <h4>Nedlsalah Personal Branding<br>| NS | Monogram</h4>
-                                <p>Logo</p>
-                                <div class="portfolio-links"><a href="https://www.behance.net/gallery/111085123/Nedlsalah-Personal-Branding-NS-Monogram" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-social">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-5.webp" class="img-fluid" alt="social media food Cover">
-                            <div class="portfolio-info">
-                                <h4>Social Media Design Food</h4>
-                                <p>social</p>
-                                <div class="portfolio-links"><a href="https://www.behance.net/gallery/108920485/Social-Media-Design-Food" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-dev">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-8.webp" class="img-fluid" alt="website green agency">
-                            <div class="portfolio-info">
-                                <h4>Transport Agency</h4>
-                                <p>Dev</p>
-                                <div class="portfolio-links"><a href="https://www.instagram.com/p/CPjVj1SDIqk" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-logo">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-10.webp" class="img-fluid" alt="logo design mare nostrum, Sea-Food-Restaurant-Logo-Design, by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>Sea Food Restaurant</h4>
-                                <p>Logo</p>
-                                <div class="portfolio-links"><a href="https://www.behance.net/gallery/116203229/Sea-Food-Restaurant-Logo-Design" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-logo">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-12.webp" class="img-fluid" alt="logo design company called WD by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>Company WD</h4>
-                                <p>Logo</p>
-                                <div class="portfolio-links"><a href="https://www.instagram.com/p/CRqk3H_o6Xu" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-photography">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-19.webp" class="img-fluid" alt="photography vol.2 by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>Vol.2</h4>
-                                <p>PHOTOGRAPHY</p>
-                                <div class="portfolio-links"><a href="https://www.instagram.com/p/CPT3RXxj91N" target=" _blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-logo">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-14.webp" class="img-fluid" alt="logo design of a skin care called BONITA by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>BONITA - Skin Care</h4>
-                                <p>Logo</p>
-                                <div class="portfolio-links"><a href="https://www.behance.net/gallery/124159965/BONITA-Skin-Care-Logo-Design" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-dev">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-16.webp" class="img-fluid" alt="site web Artisan du pain, bread, croissant by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>Artisan Du Pain</h4>
-                                <p>Dev</p>
-                                <div class="portfolio-links"><a href="https://www.instagram.com/p/CQemFshDMLG" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-logo">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-17.webp" class="img-fluid" alt="logo design photography called mainibacksatge by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>Minibackstage - Photography</h4>
-                                <p>Logo</p>
-                                <div class="portfolio-links"><a href="https://www.instagram.com/p/CRUmg3UIexq" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-dev">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-18.webp" class="img-fluid" alt="site web Minibackstage by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>Minibackstage</h4>
-                                <p>Dev</p>
-                                <div class="portfolio-links"><a href="https://www.instagram.com/p/CRPeKBhj--0" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-social">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-20.webp" class="img-fluid" alt="social media vol.1 by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>vol.1</h4>
-                                <p>social</p>
-                                <div class="portfolio-links"><a href="https://www.behance.net/gallery/122311769/Social-Media-vol1" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-photography">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-21.webp" class="img-fluid" alt="photography vol.3 by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>Vol.3</h4>
-                                <p>PHOTOGRAPHY</p>
-                                <div class="portfolio-links"><a href="https://www.instagram.com/p/CQZcjjZjB8V" target=" _blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-logo">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-22.webp" class="img-fluid" alt="logo design pet shop called PetLovers by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>PetLovers - pet shop</h4>
-                                <p>Logo</p>
-                                <div class="portfolio-links"><a href="https://www.instagram.com/p/CSmaC8ujbkd" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-design">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-23.webp" class="img-fluid" alt="design of Filters using spark ar by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>Filters using Spark ar</h4>
-                                <p>Design</p>
-                                <div class="portfolio-links"><a href="https://www.facebook.com/Nedlsalah1/photos/a.112167830662957/318347396711665/" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-dev">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-24.webp" class="img-fluid" alt="WordPress's E-commerce Website by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>WordPress's E-commerce Website</h4>
-                                <p>Dev</p>
-                                <div class="portfolio-links"><a href="https://bit.ly/3pXL6ft" target="_blank" title="Portfolio Details">Check The Details</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-5 portfolio-item filter-dev">
-                        <div class="portfolio-wrap"><img src="assets/img/portfolio/portfolio-25.webp" class="img-fluid" alt="website noroda media version 1 by nedlsalah">
-                            <div class="portfolio-info">
-                                <h4>Noroda Version 1</h4>
-                                <p>Dev</p>
-                                <div class="portfolio-links"><a href="https://nedlsalah.github.io/Noroda1/" target="_blank" title="Portfolio Details">Check Out The Live Site</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="Videos" class="Videos">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2>Videos</h2>
-                    <p>Welcome to the Videos section, where creativity meets storytelling. Here, you'll find a collection of captivating videos that I've conceptualized, shot, and edited for various industries including restaurants, gentlemen's centers,
-                        gyms, and more. Each video is a testament to my passion for digital marketing and content creation.</p>
-                </div>
-               
-                <div class="btnvid"><a href="https://photos.app.goo.gl/1nLcHABCmEqe9xB26" target="_blank"><button class="button-29" role="button" class="view-more-button">See Projects!</button></a></div>
-            </div>
-        </section>
-        <section id="contact" class="contact">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2>Contact Me</h2>
-                </div>
-                <div class="info">
-                    <div class="row">
-                        <div class="col-lg-3 inforow">
-                            <div class="email"><i class="fas fa-envelope"></i>
-                                <h4>Email:</h4>
-                                <p><a href="mailto:salaheddine.nedlouf@gmail.com" target="_blank">salaheddine.nedlouf@gmail.com</a></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 inforow">
-                            <div class="phone"><i class="fas fa-phone-alt"></i>
-                                <h4>Call:</h4>
-                                <p><a href="tel:+971588546363" target="_blank">+971 58 854 6363</a></p>
-                            </div>
-                        </div>
- 
-                    </div>
-                </div>
+      </div>
+      <div class="about-right reveal-r">
+        <h2 class="s-heading" style="margin-bottom:1rem">One Person,<br><em>Full Service</em></h2>
+        <div class="s-rule"></div>
+        <p>I'm <strong>NEDLSALAH</strong> -a Digital Marketing Specialist, WordPress Web Developer, and Graphic Designer based in Abu Dhabi, UAE. With <strong>7+ years of hands-on experience</strong> across UAE agencies and corporate brands, I bring the rare combination of strategic marketing thinking and strong creative execution under one roof.</p>
+        <p>Whether you need a campaign that generates leads, a website that converts visitors, a brand identity that stands out, or content that stops the scroll -<strong>I handle it all end-to-end</strong>. No waiting on multiple freelancers. No miscommunication.</p>
+        <p>I've worked with restaurants, retail brands, events agencies, and more across the UAE. My approach: <strong>understand what you need, deliver quality work on time, make sure it gets results.</strong></p>
+        <div class="tag-cloud">
+          <span class="tag">Meta Ads</span><span class="tag">Google Ads</span>
+          <span class="tag">SEO</span><span class="tag">WordPress</span>
+          <span class="tag">Photoshop</span><span class="tag">Illustrator</span>
+          <span class="tag">Canva</span><span class="tag">Photography</span>
+          <span class="tag">Reels</span><span class="tag">Brand Identity</span>
+          <span class="tag">Content Strategy</span><span class="tag">AI Tools</span>
+        </div>
+        <div class="info-pairs">
+          <div><div class="ip-k">Location</div><div class="ip-v">Abu Dhabi, UAE</div></div>
+          <div><div class="ip-k">Availability</div><div class="ip-v">Open to Projects</div></div>
+          <div><div class="ip-k">Languages</div><div class="ip-v">Arabic · English · French</div></div>
+          <div><div class="ip-k">Work Samples</div><div class="ip-v">Available on Request</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
- 
+<!-- EXPERIENCE -->
+<section id="experience" class="s-alt">
+  <div class="container">
+    <div class="reveal">
+      <div class="s-eyebrow"><i class="fas fa-circle-dot"></i> Experience</div>
+      <h2 class="s-heading">Track <em>Record</em></h2>
+      <div class="s-rule"></div>
+      <p class="s-lede">A consistent history of results across UAE agencies and corporate environments.</p>
+    </div>
+    <div class="xp-wrap">
 
-            </div>
-            <div  id="footer" class="copyright">©Copyright <strong><span>Nedlsalah</span></strong>. All Rights Reserved</div>
+      <div class="xp-item reveal" data-delay="1">
+        <div class="xp-rail"><div class="xp-dot"></div><div class="xp-rail-line"></div></div>
+        <div class="xp-card">
+          <div class="xp-role">Digital Marketing Specialist / Web Developer / Graphic Designer</div>
+          <ul class="xp-list">
+            <li>Plan, create, and manage social media content -producing engaging visuals and short-form Reels that build authentic audience trust.</li>
+            <li>Build and update client websites and landing pages on WordPress with conversion-focused layouts.</li>
+            <li>Shoot and edit Reels, short-form videos, and product photography for posts and stories.</li>
+            <li>Translate client briefs into effective digital content and full marketing campaigns.</li>
+          </ul>
+        </div>
+      </div>
 
-        </section>
+      <div class="xp-item reveal" data-delay="2">
+        <div class="xp-rail"><div class="xp-dot"></div><div class="xp-rail-line"></div></div>
+        <div class="xp-card">
+          <div class="xp-role">Digital Marketing Specialist / Web Developer / Graphic Designer</div>
+          <ul class="xp-list">
+            <li>Ran paid social and Google Ads campaigns, optimising reach and lead quality continuously.</li>
+            <li>Created tailored social media content -graphics, photos, and short videos -for each client's audience.</li>
+            <li>Built and maintained WordPress websites including layout improvements and mobile optimisation.</li>
+            <li>Managed content calendars and coordinated campaigns on schedule.</li>
+          </ul>
+        </div>
+      </div>
 
- 
-    </main>
-  
-    
-    
-    
-    
-    <a href="#hero" class="back-to-top"><i class="fas fa-angle-up"></i></a> <a href="https://wa.me/+971588546363" class="float" target="_blank"><i class="fab fa-whatsapp my-float"></i></a> <a href="https://linktr.ee/nedlsalah" class="linkt" target="_blank"><i class="fas fa-link mylinkt"></i></a>
-    
-        <script src="assets/vendor/jquery/jquery.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-        <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-        <script src="assets/vendor/counterup/counterup.min.js"></script>
-        <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-        <script src="assets/vendor/venobox/venobox.min.js"></script>
-        <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-        <script src="assets/vendor/typed.js/typed.min.js"></script>
-        <script src="assets/vendor/aos/aos.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-        <script src="./main.js"></script>
-        <div id="fb-root"></div>
-        <div id="fb-customer-chat" class="fb-customerchat"></div>
-        
+      <div class="xp-item reveal" data-delay="3">
+        <div class="xp-rail"><div class="xp-dot"></div><div class="xp-rail-line"></div></div>
+        <div class="xp-card">
+          <div class="xp-role">Digital Marketer &amp; Social Media Manager</div>
+          <ul class="xp-list">
+            <li>Managed all social media channels day-to-day, growing brand presence through content and paid campaigns.</li>
+            <li>Led a full brand identity refresh -logo, visual style, and tone of voice.</li>
+            <li>Improved website SEO, steadily increasing organic visibility and traffic.</li>
+            <li>Produced photography and visual content for products, events, and brand campaigns.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="xp-item reveal" data-delay="4">
+        <div class="xp-rail"><div class="xp-dot"></div><div class="xp-rail-line"></div></div>
+        <div class="xp-card">
+          <div class="xp-role">Freelance Digital Marketing &amp; Web Developer</div>
+          <ul class="xp-list">
+            <li>Delivered end-to-end digital marketing, web design, and branding from brief to launch.</li>
+            <li>Built websites and designed brand identities including logos and social media templates.</li>
+            <li>Created social media content and ran paid campaigns to grow client reach.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="reveal">
+      <div class="s-eyebrow"><i class="fas fa-circle-dot"></i> Skills</div>
+      <h2 class="s-heading">The <em>Toolkit</em></h2>
+      <div class="s-rule"></div>
+      <p class="s-lede">Every tool I use to deliver end-to-end digital work at the highest level.</p>
+    </div>
+    <div class="sk-grid reveal">
+      <span class="sk-pill hi">Meta Ads</span>
+      <span class="sk-pill hi">Google Ads</span>
+      <span class="sk-pill hi">SEO</span>
+      <span class="sk-pill">Google Analytics</span>
+      <span class="sk-pill hi">WordPress</span>
+      <span class="sk-pill">HTML &amp; CSS</span>
+      <span class="sk-pill">WooCommerce</span>
+      <span class="sk-pill">Responsive Design</span>
+      <span class="sk-pill hi">Instagram &amp; Reels</span>
+      <span class="sk-pill">Facebook</span>
+      <span class="sk-pill">LinkedIn</span>
+      <span class="sk-pill hi">Photography</span>
+      <span class="sk-pill hi">Video Editing</span>
+      <span class="sk-pill">Short-Form Video</span>
+      <span class="sk-pill hi">Photoshop</span>
+      <span class="sk-pill hi">Illustrator</span>
+      <span class="sk-pill">Lightroom</span>
+      <span class="sk-pill hi">Canva</span>
+      <span class="sk-pill hi">Logo &amp; Brand Design</span>
+      <span class="sk-pill">Mailchimp</span>
+      <span class="sk-pill">Hootsuite</span>
+      <span class="sk-pill">ChatGPT &amp; AI Tools</span>
+      <span class="sk-pill">Trello &amp; Notion</span>
+      <span class="sk-pill">Arabic · English · French</span>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="s-alt">
+  <div class="container">
+    <div class="reveal">
+      <div class="s-eyebrow"><i class="fas fa-circle-dot"></i> Credentials</div>
+      <h2 class="s-heading">Certifi<em>cations</em></h2>
+      <div class="s-rule"></div>
+    </div>
+    <div class="cert-grid reveal">
+      <div class="cert-item">
+        <div class="cert-ico"><i class="fab fa-google"></i></div>
+        <div><div class="cert-t">Fundamentals of Digital Marketing</div><div class="cert-m">Google · 2021</div></div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-ico"><i class="fas fa-graduation-cap"></i></div>
+        <div><div class="cert-t">Front End Web Development Track</div><div class="cert-m">Udacity · 2020</div></div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-ico"><i class="fab fa-wordpress"></i></div>
+        <div><div class="cert-t">WordPress Site Building</div><div class="cert-m">OpenClassrooms · 2020</div></div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-ico"><i class="fas fa-mobile-screen"></i></div>
+        <div><div class="cert-t">Responsive Website Basics</div><div class="cert-m">Coursera · 2019</div></div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-ico"><i class="fab fa-microsoft"></i></div>
+        <div><div class="cert-t">Microsoft Office Specialist: Excel</div><div class="cert-m">Microsoft · 2019</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIRE -->
+<section id="hire">
+  <div class="container">
+    <div class="cta-panel reveal">
+      <h2 class="cta-h">Ready to Work <em>Together?</em></h2>
+      <p class="cta-p">Whether you need a campaign that generates leads, a website that converts, a brand that stands out, or content that performs -I'm available. Let's talk about your project.</p>
+      <div class="cta-btns">
+        <a href="https://www.linkedin.com/in/nedsalahed/" target="_blank" class="btn-em"><i class="fab fa-linkedin-in"></i> Connect on LinkedIn</a>
+        <a href="https://linktr.ee/nedlsalah" target="_blank" class="btn-out"><i class="fas fa-link"></i> All My Links</a>
+      </div>
+      <div class="cta-trust">
+        <span class="trust-item"><i class="fas fa-check"></i> 7+ Years Experience</span>
+        <span class="trust-item"><i class="fas fa-check"></i> UAE-Based</span>
+        <span class="trust-item"><i class="fas fa-check"></i> End-to-End Service</span>
+        <span class="trust-item"><i class="fas fa-check"></i> Arabic · English · French</span>
+        <span class="trust-item"><i class="fas fa-check"></i> Work Samples on Request</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="ft-inner">
+      <div class="ft-wordmark">NEDL<span>SALAH</span></div>
+      <div class="ft-sub">Digital Marketing · Web Development · Design · Photography</div>
+      <div class="ft-socials">
+        <a href="https://www.instagram.com/nedlsalah" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.behance.net/nedlsalah" target="_blank" title="Behance"><i class="fab fa-behance"></i></a>
+        <a href="https://www.linkedin.com/in/nedsalahed/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://500px.com/nedlsalah" target="_blank" title="500px"><i class="fab fa-500px"></i></a>
+        <a href="https://linktr.ee/nedlsalah" target="_blank" title="Linktree"><i class="fas fa-link"></i></a>
+      </div>
+      <div class="ft-copy">&copy; <span id="yr"></span> NEDLSALAH -All Rights Reserved</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<a href="#hero" class="btt" id="btt"><i class="fas fa-arrow-up"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ── Year ── */
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ── Custom cursor ── */
+  const dot = document.getElementById('c-dot');
+  const ring = document.getElementById('c-ring');
+  let mx=0, my=0, rx=0, ry=0;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+  (function loop(){
+    dot.style.left = mx+'px'; dot.style.top = my+'px';
+    rx += (mx-rx)*.11; ry += (my-ry)*.11;
+    ring.style.left = rx+'px'; ring.style.top = ry+'px';
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,button,.svc,.xp-card,.cert-item,.stat-cell,.sk-pill,.chip,.tag,.hero-prop').forEach(el => {
+    el.addEventListener('mouseenter', ()=>document.body.classList.add('cur-hover'));
+    el.addEventListener('mouseleave', ()=>document.body.classList.remove('cur-hover'));
+  });
+
+  /* ── Typed ── */
+  new Typed('#typer', {
+    strings:[
+      'Digital Marketing Specialist',
+      'WordPress Web Developer',
+      'Graphic & Brand Designer',
+      'Social Media Manager',
+      'Photographer & Video Creator'
+    ],
+    typeSpeed:52, backSpeed:26, backDelay:2200, loop:true, showCursor:false
+  });
+
+  /* ── Nav scroll ── */
+  const nav = document.getElementById('nav');
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY;
+    nav.classList.toggle('stuck', y > 60);
+    btt.classList.toggle('show', y > 500);
+    // active nav
+    let cur = '';
+    document.querySelectorAll('section[id]').forEach(s=>{
+      if(y >= s.offsetTop - 130) cur = s.id;
+    });
+    document.querySelectorAll('.nav-menu a').forEach(a=>{
+      a.classList.toggle('on', a.getAttribute('href')==='#'+cur);
+    });
+  }, {passive:true});
+
+  /* ── Hamburger ── */
+  const hbg = document.getElementById('hbg');
+  const menu = document.getElementById('navMenu');
+  hbg.addEventListener('click', ()=>{
+    hbg.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    hbg.classList.remove('open'); menu.classList.remove('open');
+  }));
+
+  /* ── Smooth scroll ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const t = document.querySelector(a.getAttribute('href'));
+      if(t){ e.preventDefault(); window.scrollTo({top:t.offsetTop-78,behavior:'smooth'}); }
+    });
+  });
+
+  /* ── Reveal on scroll ── */
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>io.observe(el));
+
+});
+</script>
 </body>
-
 </html>
