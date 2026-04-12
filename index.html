@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Digital Marketing Specialist, WordPress Web Developer & Graphic Designer -7+ years in the UAE.">
 <title>NEDLSALAH - Digital Marketing · Web Development · Design</title>
- <!-- Favicon -->
 <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
@@ -15,41 +14,47 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5.0.18/index.css">
 <style>
 /* ─────────────────────────────────────────────
-LIQUID GLASS DESIGN SYSTEM 2025
-Latest CSS: @property, color-mix, backdrop-filter
+PROTECTION LAYER
 ───────────────────────────────────────────── */
-@property --gradient-angle {
-syntax: '<angle>';
-initial-value: 0deg;
-inherits: false;
+html, body {
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 }
+::selection {
+background: transparent !important;
+color: transparent !important;
+}
+::-moz-selection {
+background: transparent !important;
+color: transparent !important;
+}
+body {
+-webkit-touch-callout: none;
+}
+/* ─────────────────────────────────────────────
+LIQUID GLASS DESIGN SYSTEM 2025
+───────────────────────────────────────────── */
 :root {
-/* Deep Space Dark Palette */
 --bg-primary: #050508;
 --bg-secondary: #0a0a0f;
 --bg-tertiary: #101018;
 --bg-elevated: #151520;
-/* Liquid Glass Colors */
 --glass-bg: rgba(255, 255, 255, 0.03);
 --glass-bg-hover: rgba(255, 255, 255, 0.06);
 --glass-border: rgba(255, 255, 255, 0.08);
 --glass-border-strong: rgba(255, 255, 255, 0.15);
 --glass-highlight: rgba(255, 255, 255, 0.12);
-/* Accent - Electric Cyan */
 --accent: #00d4ff;
 --accent-glow: rgba(0, 212, 255, 0.4);
 --accent-dim: rgba(0, 212, 255, 0.1);
---accent-secondary: #7c3aed;
---accent-tertiary: #f472b6;
-/* Text */
 --text-primary: #ffffff;
 --text-secondary: rgba(255, 255, 255, 0.7);
 --text-tertiary: rgba(255, 255, 255, 0.5);
 --text-muted: rgba(255, 255, 255, 0.35);
-/* Typography */
 --font-display: 'Space Grotesk', system-ui, sans-serif;
 --font-body: 'Inter', system-ui, sans-serif;
-/* Spacing - Generous Side Margins */
 --container-padding: clamp(1.5rem, 8vw, 6rem);
 --space-xs: 0.5rem;
 --space-sm: 1rem;
@@ -58,19 +63,14 @@ inherits: false;
 --space-xl: 4rem;
 --space-2xl: 6rem;
 --space-3xl: 8rem;
-/* Effects */
 --blur-sm: blur(8px);
 --blur-md: blur(20px);
 --blur-lg: blur(40px);
 --blur-xl: blur(80px);
-/* Transitions */
 --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 --ease-bounce: cubic-bezier(0.68, -0.15, 0.265, 1.15);
 --ease-liquid: cubic-bezier(0.23, 1, 0.32, 1);
 }
-/* ─────────────────────────────────────────────
-BASE & RESET
-───────────────────────────────────────────── */
 *, *::before, *::after {
 margin: 0;
 padding: 0;
@@ -90,7 +90,6 @@ overflow-x: hidden;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-/* Animated Mesh Gradient Background */
 body::before {
 content: '';
 position: fixed;
@@ -107,7 +106,6 @@ animation: meshMove 20s ease-in-out infinite;
 33% { transform: translate(2%, -2%) scale(1.02); }
 66% { transform: translate(-1%, 1%) scale(0.98); }
 }
-/* Noise Texture Overlay */
 body::after {
 content: '';
 position: fixed;
@@ -115,11 +113,7 @@ inset: 0;
 z-index: 9999;
 pointer-events: none;
 opacity: 0.03;
-background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-::selection {
-background: var(--accent-dim);
-color: var(--accent);
+background-image: url("image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
 ::-webkit-scrollbar {
 width: 6px;
@@ -134,16 +128,13 @@ border-radius: 3px;
 ::-webkit-scrollbar-thumb:hover {
 background: var(--accent);
 }
-/* ─────────────────────────────────────────────
-CONTAINER
-───────────────────────────────────────────── */
 .container {
 max-width: 1400px;
 margin: 0 auto;
 padding: 0 var(--container-padding);
 }
 /* ─────────────────────────────────────────────
-NAVIGATION - Floating Glass Bar
+NAVIGATION
 ───────────────────────────────────────────── */
 .nav {
 position: fixed;
@@ -164,17 +155,12 @@ background: rgba(10, 10, 15, 0.7);
 backdrop-filter: var(--blur-lg) saturate(200%);
 -webkit-backdrop-filter: var(--blur-lg) saturate(200%);
 border: 1px solid var(--glass-border);
-box-shadow:
-0 8px 32px rgba(0, 0, 0, 0.4),
-inset 0 1px 0 rgba(255, 255, 255, 0.1);
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 transition: all 0.4s var(--ease-liquid);
 }
 .nav-inner:hover {
 border-color: var(--glass-border-strong);
-box-shadow:
-0 12px 40px rgba(0, 0, 0, 0.5),
-0 0 0 1px rgba(0, 212, 255, 0.1),
-inset 0 1px 0 rgba(255, 255, 255, 0.15);
+box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 212, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 .nav-logo {
 font-family: var(--font-display);
@@ -186,11 +172,6 @@ text-decoration: none;
 display: flex;
 align-items: center;
 gap: 0.5rem;
-}
-
-@keyframes pulse {
-0%, 100% { opacity: 1; transform: scale(1); }
-50% { opacity: 0.7; transform: scale(1.1); }
 }
 .nav-menu {
 display: flex;
@@ -339,14 +320,8 @@ animation: blink 2s infinite;
 50% { opacity: 0.3; }
 }
 @keyframes fadeInUp {
-from {
-opacity: 0;
-transform: translateY(30px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
 }
 .hero-title {
 font-family: var(--font-display);
@@ -363,10 +338,7 @@ animation: fadeInUp 0.8s var(--ease-liquid) forwards;
 opacity: 0;
 }
 .hero-title .line:nth-child(1) { animation-delay: 0.1s; }
-.hero-title .line:nth-child(2) {
-animation-delay: 0.2s;
-color: var(--accent);
-}
+.hero-title .line:nth-child(2) { animation-delay: 0.2s; color: var(--accent); }
 .hero-subtitle {
 font-size: 1.125rem;
 color: var(--text-secondary);
@@ -457,7 +429,6 @@ color: var(--text-secondary);
 font-size: 1rem;
 text-decoration: none;
 transition: all 0.3s var(--ease-smooth);
-position: relative;
 }
 .social-link:hover {
 background: var(--glass-bg-hover);
@@ -510,7 +481,7 @@ background: radial-gradient(ellipse, rgba(255, 255, 255, 0.4) 0%, transparent 70
 filter: blur(10px);
 }
 /* ─────────────────────────────────────────────
-SECTION BASE
+SECTIONS BASE
 ───────────────────────────────────────────── */
 section {
 padding: var(--space-3xl) 0;
@@ -539,9 +510,7 @@ letter-spacing: -0.02em;
 margin-bottom: 1rem;
 color: var(--text-primary);
 }
-.section-title span {
-color: var(--accent);
-}
+.section-title span { color: var(--accent); }
 .section-desc {
 font-size: 1.125rem;
 color: var(--text-secondary);
@@ -551,9 +520,7 @@ margin: 0 auto;
 /* ─────────────────────────────────────────────
 SERVICES
 ───────────────────────────────────────────── */
-#services {
-background: var(--bg-secondary);
-}
+#services { background: var(--bg-secondary); }
 .services-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -573,23 +540,16 @@ overflow: hidden;
 content: '';
 position: absolute;
 inset: 0;
-background: linear-gradient(135deg,
-rgba(0, 212, 255, 0.05) 0%,
-transparent 50%);
+background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
 opacity: 0;
 transition: opacity 0.4s;
 }
 .service-card:hover {
 transform: translateY(-8px);
 border-color: var(--accent);
-box-shadow:
-0 20px 40px rgba(0, 0, 0, 0.3),
-0 0 0 1px rgba(0, 212, 255, 0.2),
-inset 0 1px 0 rgba(255, 255, 255, 0.1);
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 212, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
-.service-card:hover::before {
-opacity: 1;
-}
+.service-card:hover::before { opacity: 1; }
 .service-icon {
 width: 56px;
 height: 56px;
@@ -621,9 +581,7 @@ font-size: 0.9375rem;
 line-height: 1.7;
 margin-bottom: 1.5rem;
 }
-.service-list {
-list-style: none;
-}
+.service-list { list-style: none; }
 .service-list li {
 display: flex;
 align-items: center;
@@ -646,15 +604,11 @@ grid-template-columns: 1fr 1fr;
 gap: var(--space-2xl);
 align-items: center;
 }
-.about-visual {
-position: relative;
-}
+.about-visual { position: relative; }
 .glass-portrait {
 aspect-ratio: 4/5;
 border-radius: 32px;
-background: linear-gradient(135deg,
-rgba(0, 212, 255, 0.1) 0%,
-rgba(124, 58, 237, 0.1) 100%);
+background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
 backdrop-filter: var(--blur-md);
 border: 1px solid var(--glass-border);
 display: flex;
@@ -674,9 +628,7 @@ content: 'N';
 font-family: var(--font-display);
 font-size: 12rem;
 font-weight: 700;
-background: linear-gradient(135deg,
-rgba(255, 255, 255, 0.1) 0%,
-transparent 100%);
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 position: absolute;
@@ -746,85 +698,62 @@ color: var(--accent);
 transform: translateY(-2px);
 }
 /* ─────────────────────────────────────────────
-EXPERIENCE
+EXPERIENCE - FIXED (CYAN ONLY)
 ───────────────────────────────────────────── */
-#experience {
-background: var(--bg-secondary);
-}
-.timeline {
-max-width: 800px;
+#experience { background: var(--bg-secondary); }
+.experience-wrapper {
+max-width: 1000px;
 margin: 0 auto;
-position: relative;
+display: grid;
+gap: 1rem;
 }
-.timeline::before {
+.exp-block {
+padding: 2rem 2.25rem;
+background: var(--glass-bg);
+backdrop-filter: var(--blur-md);
+border: 1px solid var(--glass-border);
+border-radius: 16px;
+transition: all 0.4s var(--ease-liquid);
+position: relative;
+overflow: hidden;
+}
+.exp-block::before {
 content: '';
 position: absolute;
 left: 0;
 top: 0;
 bottom: 0;
-width: 1px;
-background: linear-gradient(to bottom,
-var(--accent) 0%,
-var(--glass-border) 50%,
-transparent 100%);
+width: 3px;
+background: var(--accent);
+border-radius: 0 3px 3px 0;
+opacity: 0;
+transition: opacity 0.4s var(--ease-smooth);
 }
-.timeline-item {
-padding-left: 3rem;
-padding-bottom: 3rem;
-position: relative;
-}
-.timeline-item::before {
-content: '';
-position: absolute;
-left: -4px;
-top: 0.5rem;
-width: 9px;
-height: 9px;
-background: var(--bg-secondary);
-border: 2px solid var(--accent);
-border-radius: 50%;
-box-shadow: 0 0 0 4px var(--accent-dim);
-}
-.timeline-card {
-padding: 2rem;
-background: var(--glass-bg);
-backdrop-filter: var(--blur-md);
-border: 1px solid var(--glass-border);
-border-radius: 20px;
-transition: all 0.4s var(--ease-liquid);
-}
-.timeline-card:hover {
+.exp-block:hover {
 border-color: var(--glass-border-strong);
 transform: translateX(8px);
-box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 212, 255, 0.15);
+background: var(--glass-bg-hover);
 }
-.timeline-role {
-font-family: var(--font-display);
-font-size: 1.125rem;
-font-weight: 600;
-margin-bottom: 1rem;
-color: var(--text-primary);
+.exp-block:hover::before { opacity: 1; }
+.exp-item {
+display: flex;
+gap: 1.25rem;
+padding: 0.6rem 0;
 }
-.timeline-list {
-list-style: none;
-}
-.timeline-list li {
-position: relative;
-padding-left: 1.25rem;
-color: var(--text-secondary);
-font-size: 0.9375rem;
-line-height: 1.7;
-margin-bottom: 0.5rem;
-}
-.timeline-list li::before {
-content: '';
-position: absolute;
-left: 0;
-top: 0.6rem;
-width: 6px;
-height: 6px;
+.exp-dot {
+flex-shrink: 0;
+width: 8px;
+height: 8px;
 background: var(--accent);
 border-radius: 50%;
+margin-top: 0.5rem;
+box-shadow: 0 0 10px var(--accent-glow);
+}
+.exp-text {
+color: var(--text-secondary);
+font-size: 0.95rem;
+line-height: 1.75;
 }
 /* ─────────────────────────────────────────────
 SKILLS
@@ -864,9 +793,7 @@ color: var(--accent);
 /* ─────────────────────────────────────────────
 CERTIFICATIONS
 ───────────────────────────────────────────── */
-#certifications {
-background: var(--bg-secondary);
-}
+#certifications { background: var(--bg-secondary); }
 .certs-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -914,9 +841,7 @@ color: var(--text-tertiary);
 /* ─────────────────────────────────────────────
 CTA / HIRE
 ───────────────────────────────────────────── */
-#hire {
-position: relative;
-}
+#hire { position: relative; }
 .cta-container {
 max-width: 900px;
 margin: 0 auto;
@@ -947,9 +872,7 @@ position: relative;
 z-index: 1;
 color: var(--text-primary);
 }
-.cta-title span {
-color: var(--accent);
-}
+.cta-title span { color: var(--accent); }
 .cta-text {
 font-size: 1.125rem;
 color: var(--text-secondary);
@@ -984,9 +907,7 @@ gap: 0.5rem;
 font-size: 0.8125rem;
 color: var(--text-tertiary);
 }
-.trust-item i {
-color: var(--accent);
-}
+.trust-item i { color: var(--accent); }
 /* ─────────────────────────────────────────────
 FOOTER
 ───────────────────────────────────────────── */
@@ -1009,9 +930,7 @@ font-weight: 700;
 letter-spacing: -0.02em;
 color: var(--text-primary);
 }
-.footer-logo span {
-color: var(--accent);
-}
+.footer-logo span { color: var(--accent); }
 .footer-tagline {
 color: var(--text-tertiary);
 font-size: 0.875rem;
@@ -1114,14 +1033,11 @@ transform: translateX(0);
 RESPONSIVE
 ───────────────────────────────────────────── */
 @media (max-width: 1024px) {
-.hero-grid,
-.about-grid {
+.hero-grid, .about-grid {
 grid-template-columns: 1fr;
 gap: 3rem;
 }
-.hero-visual {
-order: -1;
-}
+.hero-visual { order: -1; }
 .glass-sphere {
 width: 300px;
 height: 300px;
@@ -1149,25 +1065,16 @@ padding: 1rem;
 flex-direction: column;
 gap: 0.5rem;
 }
-.nav-menu.open {
-display: flex;
-}
-.hamburger {
-display: flex;
-}
-.services-grid {
-grid-template-columns: 1fr;
-}
-.hero-actions {
-flex-direction: column;
-}
+.nav-menu.open { display: flex; }
+.hamburger { display: flex; }
+.services-grid { grid-template-columns: 1fr; }
+.hero-actions { flex-direction: column; }
 .btn {
 width: 100%;
 justify-content: center;
 }
-.cta-buttons {
-flex-direction: column;
-}
+.cta-buttons { flex-direction: column; }
+.exp-block { padding: 1.5rem; }
 }
 @media (max-width: 480px) {
 .stats-float {
@@ -1182,14 +1089,15 @@ min-width: auto;
 flex-direction: column;
 gap: 1rem;
 }
+.exp-item { gap: 0.875rem; }
 }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false">
 <!-- Navigation -->
 <nav class="nav">
 <div class="nav-inner">
-<a href="#hero"class="nav-logo" >NEDLSALAH</a>
+<a href="#hero" class="nav-logo">NEDLSALAH</a>
 <ul class="nav-menu" id="navMenu">
 <li><a href="#hero" class="active">Home</a></li>
 <li><a href="#services">Services</a></li>
@@ -1199,7 +1107,7 @@ gap: 1rem;
 <li><a href="#certifications">Credentials</a></li>
 <li><a href="#hire">Contact</a></li>
 </ul>
-<button class="hamburger" id="hamburger" aria-label="Menu">
+<button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
 <span></span>
 <span></span>
 <span></span>
@@ -1214,36 +1122,24 @@ gap: 1rem;
 <div class="container">
 <div class="hero-grid">
 <div class="hero-content">
-<div class="hero-badge">
-Available for Projects
-</div>
+<div class="hero-badge">Available for Projects</div>
 <h1 class="hero-title">
 <span class="line">Digital Creator</span>
 <span class="line">& Developer</span>
 </h1>
 <p class="hero-subtitle">
-I help businesses grow online through smart marketing, high-quality design,
-and content that converts - 7+ years of experience in the UAE.
+I help businesses grow online through smart marketing, high-quality design, and content that converts - 7+ years of experience in the UAE.
 </p>
 <div class="hero-typed">
 <span id="typed-text"></span><span class="cursor"></span>
 </div>
 <div class="hero-actions">
-<a href="#services" class="btn btn-primary">
-<i class="fas fa-briefcase"></i> View Services
-</a>
-<a href="#hire" class="btn btn-secondary">
-<i class="fas fa-paper-plane"></i> Get in Touch
-</a>
+<a href="#services" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Services</a>
+<a href="#hire" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Get in Touch</a>
 </div>
 <div class="hero-socials">
-<a href="https://www.behance.net/nedlsalah" class="social-link" target="_blank" title="Behance">
-<i class="fab fa-behance"></i>
-</a>
- 
-<a href="https://500px.com/nedlsalah" class="social-link" target="_blank" title="500px">
-<i class="fab fa-500px"></i>
-</a>
+<a href="https://www.behance.net/nedlsalah" class="social-link" target="_blank" title="Behance"><i class="fab fa-behance"></i></a>
+<a href="https://500px.com/nedlsalah" class="social-link" target="_blank" title="500px"><i class="fab fa-500px"></i></a>
 </div>
 </div>
 <div class="hero-visual">
@@ -1258,23 +1154,15 @@ and content that converts - 7+ years of experience in the UAE.
 <section id="services">
 <div class="container">
 <div class="section-header reveal">
-<div class="section-eyebrow">
-<i class="fas fa-circle-dot"></i> What I Do
-</div>
+<div class="section-eyebrow"><i class="fas fa-circle-dot"></i> What I Do</div>
 <h2 class="section-title">Services <span>& Solutions</span></h2>
-<p class="section-desc">
-Full-service digital expertise - strategy, design, development, and content under one roof.
-</p>
+<p class="section-desc">Full-service digital expertise - strategy, design, development, and content under one roof.</p>
 </div>
 <div class="services-grid">
 <div class="service-card reveal">
-<div class="service-icon">
-<i class="fas fa-bullseye"></i>
-</div>
+<div class="service-icon"><i class="fas fa-bullseye"></i></div>
 <h3 class="service-title">Digital Marketing & Paid Ads</h3>
-<p class="service-desc">
-Data-driven campaigns that reach the right audience and convert. Full funnel from strategy to reporting.
-</p>
+<p class="service-desc">Data-driven campaigns that reach the right audience and convert. Full funnel from strategy to reporting.</p>
 <ul class="service-list">
 <li>Meta Ads - Facebook & Instagram</li>
 <li>Google Ads & Search campaigns</li>
@@ -1283,13 +1171,9 @@ Data-driven campaigns that reach the right audience and convert. Full funnel fro
 </ul>
 </div>
 <div class="service-card reveal">
-<div class="service-icon">
-<i class="fab fa-wordpress"></i>
-</div>
+<div class="service-icon"><i class="fab fa-wordpress"></i></div>
 <h3 class="service-title">WordPress Development</h3>
-<p class="service-desc">
-Fast, mobile-friendly websites built to your brand - no template bloat, no compromise.
-</p>
+<p class="service-desc">Fast, mobile-friendly websites built to your brand - no template bloat, no compromise.</p>
 <ul class="service-list">
 <li>Business & portfolio websites</li>
 <li>WooCommerce e-commerce stores</li>
@@ -1298,13 +1182,9 @@ Fast, mobile-friendly websites built to your brand - no template bloat, no compr
 </ul>
 </div>
 <div class="service-card reveal">
-<div class="service-icon">
-<i class="fas fa-pen-ruler"></i>
-</div>
+<div class="service-icon"><i class="fas fa-pen-ruler"></i></div>
 <h3 class="service-title">Graphic Design & Branding</h3>
-<p class="service-desc">
-Visual identity that makes your brand impossible to ignore - consistent, memorable, built to last.
-</p>
+<p class="service-desc">Visual identity that makes your brand impossible to ignore - consistent, memorable, built to last.</p>
 <ul class="service-list">
 <li>Logo & brand identity design</li>
 <li>Social media graphics & templates</li>
@@ -1313,13 +1193,9 @@ Visual identity that makes your brand impossible to ignore - consistent, memorab
 </ul>
 </div>
 <div class="service-card reveal">
-<div class="service-icon">
-<i class="fas fa-camera"></i>
-</div>
+<div class="service-icon"><i class="fas fa-camera"></i></div>
 <h3 class="service-title">Photography & Video</h3>
-<p class="service-desc">
-Content that stops the scroll - Reels, product photos, and event content built for social.
-</p>
+<p class="service-desc">Content that stops the scroll - Reels, product photos, and event content built for social.</p>
 <ul class="service-list">
 <li>Instagram Reels & TikTok videos</li>
 <li>Product & food photography</li>
@@ -1328,13 +1204,9 @@ Content that stops the scroll - Reels, product photos, and event content built f
 </ul>
 </div>
 <div class="service-card reveal">
-<div class="service-icon">
-<i class="fas fa-hashtag"></i>
-</div>
+<div class="service-icon"><i class="fas fa-hashtag"></i></div>
 <h3 class="service-title">Social Media Management</h3>
-<p class="service-desc">
-Consistent, on-brand presence without the hassle. I handle everything so you focus on business.
-</p>
+<p class="service-desc">Consistent, on-brand presence without the hassle. I handle everything so you focus on business.</p>
 <ul class="service-list">
 <li>Multi-platform content creation</li>
 <li>Posting schedules & community</li>
@@ -1343,13 +1215,9 @@ Consistent, on-brand presence without the hassle. I handle everything so you foc
 </ul>
 </div>
 <div class="service-card reveal">
-<div class="service-icon">
-<i class="fas fa-pencil-alt"></i>
-</div>
+<div class="service-icon"><i class="fas fa-pencil-alt"></i></div>
 <h3 class="service-title">Content & Copywriting</h3>
-<p class="service-desc">
-Words that work. Website copy, captions, and product descriptions that connect and drive action.
-</p>
+<p class="service-desc">Words that work. Website copy, captions, and product descriptions that connect and drive action.</p>
 <ul class="service-list">
 <li>Website & landing page copy</li>
 <li>Social media captions</li>
@@ -1369,44 +1237,18 @@ Words that work. Website copy, captions, and product descriptions that connect a
 <img src="./img/me.jpg" alt="NEDLSALAH Portrait">
 </div>
 <div class="stats-float">
-<div class="stat-box">
-<span class="stat-number">7+</span>
-<span class="stat-label">Years Exp</span>
-</div>
-<div class="stat-box">
-<span class="stat-number">UAE</span>
-<span class="stat-label">Based</span>
-</div>
-<div class="stat-box">
-<span class="stat-number">6</span>
-<span class="stat-label">Services</span>
-</div>
-<div class="stat-box">
-<span class="stat-number">3</span>
-<span class="stat-label">Languages</span>
-</div>
+<div class="stat-box"><span class="stat-number">7+</span><span class="stat-label">Years Exp</span></div>
+<div class="stat-box"><span class="stat-number">UAE</span><span class="stat-label">Based</span></div>
+<div class="stat-box"><span class="stat-number">6</span><span class="stat-label">Services</span></div>
+<div class="stat-box"><span class="stat-number">3</span><span class="stat-label">Languages</span></div>
 </div>
 </div>
 <div class="about-content reveal-right">
-<div class="section-eyebrow">
-<i class="fas fa-circle-dot"></i> About Me
-</div>
+<div class="section-eyebrow"><i class="fas fa-circle-dot"></i> About Me</div>
 <h3>One Person,<br>Full Service</h3>
-<p>
-I'm <strong>NEDLSALAH</strong> - a Digital Marketing Specialist, WordPress Web Developer,
-and Graphic Designer based in Abu Dhabi, UAE. With 7+ years of hands-on experience across
-UAE agencies and corporate brands, I bring the rare combination of strategic marketing
-thinking and strong creative execution under one roof.
-</p>
-<p>
-Whether you need a campaign that generates leads, a website that converts visitors,
-a brand identity that stands out, or content that stops the scroll - <strong>I handle
-it all end-to-end</strong>. No waiting on multiple freelancers. No miscommunication.
-</p>
-<p>
-I've worked with restaurants, retail brands, events agencies, and more across the UAE.
-My approach: understand what you need, deliver quality work on time, make sure it gets results.
-</p>
+<p>I'm <strong>NEDLSALAH</strong> - a Digital Marketing Specialist, WordPress Web Developer, and Graphic Designer based in Abu Dhabi, UAE. With 7+ years of hands-on experience across UAE agencies and corporate brands, I bring the rare combination of strategic marketing thinking and strong creative execution under one roof.</p>
+<p>Whether you need a campaign that generates leads, a website that converts visitors, a brand identity that stands out, or content that stops the scroll - <strong>I handle it all end-to-end</strong>. No waiting on multiple freelancers. No miscommunication.</p>
+<p>I've worked with restaurants, retail brands, events agencies, and more across the UAE. My approach: understand what you need, deliver quality work on time, make sure it gets results.</p>
 <div class="tag-cloud">
 <span class="tag">Meta Ads</span>
 <span class="tag">Google Ads</span>
@@ -1429,56 +1271,91 @@ My approach: understand what you need, deliver quality work on time, make sure i
 <section id="experience">
 <div class="container">
 <div class="section-header reveal">
-<div class="section-eyebrow">
-<i class="fas fa-circle-dot"></i> Track Record
-</div>
+<div class="section-eyebrow"><i class="fas fa-circle-dot"></i> Track Record</div>
 <h2 class="section-title">Professional <span>Experience</span></h2>
-<p class="section-desc">
-A consistent history of results across UAE agencies and corporate environments.
-</p>
+<p class="section-desc">A consistent history of results across UAE agencies and corporate environments.</p>
 </div>
-<div class="timeline">
-<div class="timeline-item reveal">
-<div class="timeline-card">
-<h4 class="timeline-role">Digital Marketing Specialist / Web Developer / Graphic Designer</h4>
-<ul class="timeline-list">
-<li>Plan, create, and manage social media content - producing engaging visuals and short-form Reels that build authentic audience trust.</li>
-<li>Build and update client websites and landing pages on WordPress with conversion-focused layouts.</li>
-<li>Shoot and edit Reels, short-form videos, and product photography for posts and stories.</li>
-<li>Translate client briefs into effective digital content and full marketing campaigns.</li>
-</ul>
+<div class="experience-wrapper">
+<div class="exp-block reveal">
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Plan and execute social media strategies across multiple client accounts, producing consistent, brand-aligned content tailored to each audience.</p>
 </div>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Create engaging visual content including short-form videos and Reels, handling shooting and editing using mobile-first approaches to maintain authenticity and performance.</p>
 </div>
-<div class="timeline-item reveal">
-<div class="timeline-card">
-<h4 class="timeline-role">Digital Marketing Specialist / Web Developer / Graphic Designer</h4>
-<ul class="timeline-list">
-<li>Ran paid social and Google Ads campaigns, optimising reach and lead quality continuously.</li>
-<li>Created tailored social media content - graphics, photos, and short videos - for each client's audience.</li>
-<li>Built and maintained WordPress websites including layout improvements and mobile optimisation.</li>
-<li>Managed content calendars and coordinated campaigns on schedule.</li>
-</ul>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Support and manage paid advertising campaigns (Meta Ads and Google Ads), assisting with campaign setup, audience targeting, creative testing, and ongoing optimization to improve reach and lead quality.</p>
 </div>
 </div>
-<div class="timeline-item reveal">
-<div class="timeline-card">
-<h4 class="timeline-role">Digital Marketer & Social Media Manager</h4>
-<ul class="timeline-list">
-<li>Managed all social media channels day-to-day, growing brand presence through content and paid campaigns.</li>
-<li>Led a full brand identity refresh - logo, visual style, and tone of voice.</li>
-<li>Improved website SEO, steadily increasing organic visibility and traffic.</li>
-<li>Produced photography and visual content for products, events, and brand campaigns.</li>
-</ul>
+<div class="exp-block reveal">
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Collaborate closely with the design team to develop campaign visuals, ensuring alignment with brand identity and marketing objectives.</p>
+</div>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Build and maintain WordPress websites and landing pages, focusing on clean design, usability, and mobile responsiveness.</p>
+</div>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Work directly with clients to understand requirements and translate ideas into practical marketing outputs across content, ads, and web.</p>
+</div>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Contribute to campaign planning and creative direction through brainstorming sessions, helping shape messaging and execution.</p>
 </div>
 </div>
-<div class="timeline-item reveal">
-<div class="timeline-card">
-<h4 class="timeline-role">Freelance Digital Marketing & Web Developer</h4>
-<ul class="timeline-list">
-<li>Delivered end-to-end digital marketing, web design, and branding from brief to launch.</li>
-<li>Built websites and designed brand identities including logos and social media templates.</li>
-<li>Created social media content and ran paid campaigns to grow client reach.</li>
-</ul>
+<div class="exp-block reveal">
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Ran paid social and Google Ads campaigns, optimising reach and lead quality continuously through data-driven adjustments.</p>
+</div>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Created tailored social media content - graphics, photos, and short videos - for each client's specific audience and brand voice.</p>
+</div>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Built and maintained WordPress websites including layout improvements, performance tuning, and mobile optimisation.</p>
+</div>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Managed content calendars and coordinated multi-channel campaigns on schedule, ensuring consistent brand output.</p>
+</div>
+</div>
+<div class="exp-block reveal">
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Managed all social media channels day-to-day, growing brand presence through organic content strategies and paid campaigns.</p>
+</div>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Led a full brand identity refresh - redesigning logo, establishing visual style systems, and defining tone of voice across touchpoints.</p>
+</div>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Improved website SEO through on-page optimisation, steadily increasing organic visibility and inbound traffic over time.</p>
+</div>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Produced photography and visual content for products, events, and brand campaigns that aligned with strategic goals.</p>
+</div>
+</div>
+<div class="exp-block reveal">
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Delivered end-to-end digital marketing, web design, and branding projects from initial brief through to successful launch.</p>
+</div>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Built custom websites and designed brand identities including logos, color systems, and social media template kits.</p>
+</div>
+<div class="exp-item">
+<span class="exp-dot"></span>
+<p class="exp-text">Created engaging social media content and ran targeted paid campaigns to grow client reach and drive measurable engagement.</p>
 </div>
 </div>
 </div>
@@ -1488,13 +1365,9 @@ A consistent history of results across UAE agencies and corporate environments.
 <section id="skills">
 <div class="container">
 <div class="section-header reveal">
-<div class="section-eyebrow">
-<i class="fas fa-circle-dot"></i> Expertise
-</div>
+<div class="section-eyebrow"><i class="fas fa-circle-dot"></i> Expertise</div>
 <h2 class="section-title">The <span>Toolkit</span></h2>
-<p class="section-desc">
-Every tool I use to deliver end-to-end digital work at the highest level.
-</p>
+<p class="section-desc">Every tool I use to deliver end-to-end digital work at the highest level.</p>
 </div>
 <div class="skills-cloud reveal">
 <span class="skill-pill featured">Meta Ads</span>
@@ -1528,55 +1401,41 @@ Every tool I use to deliver end-to-end digital work at the highest level.
 <section id="certifications">
 <div class="container">
 <div class="section-header reveal">
-<div class="section-eyebrow">
-<i class="fas fa-circle-dot"></i> Credentials
-</div>
+<div class="section-eyebrow"><i class="fas fa-circle-dot"></i> Credentials</div>
 <h2 class="section-title">Certifi<span>cations</span></h2>
-<p class="section-desc">
-Professional certifications and continuous learning.
-</p>
+<p class="section-desc">Professional certifications and continuous learning.</p>
 </div>
 <div class="certs-grid">
 <div class="cert-card reveal">
-<div class="cert-icon">
-<i class="fab fa-google"></i>
-</div>
+<div class="cert-icon"><i class="fab fa-google"></i></div>
 <div class="cert-content">
 <h4>Fundamentals of Digital Marketing</h4>
 <p>Google · 2021</p>
 </div>
 </div>
 <div class="cert-card reveal">
-<div class="cert-icon">
-<i class="fas fa-graduation-cap"></i>
-</div>
+<div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
 <div class="cert-content">
 <h4>Front End Web Development Track</h4>
 <p>Udacity · 2020</p>
 </div>
 </div>
 <div class="cert-card reveal">
-<div class="cert-icon">
-<i class="fab fa-wordpress"></i>
-</div>
+<div class="cert-icon"><i class="fab fa-wordpress"></i></div>
 <div class="cert-content">
 <h4>WordPress Site Building</h4>
 <p>OpenClassrooms · 2020</p>
 </div>
 </div>
 <div class="cert-card reveal">
-<div class="cert-icon">
-<i class="fas fa-mobile-screen"></i>
-</div>
+<div class="cert-icon"><i class="fas fa-mobile-screen"></i></div>
 <div class="cert-content">
 <h4>Responsive Website Basics</h4>
 <p>Coursera · 2019</p>
 </div>
 </div>
 <div class="cert-card reveal">
-<div class="cert-icon">
-<i class="fab fa-microsoft"></i>
-</div>
+<div class="cert-icon"><i class="fab fa-microsoft"></i></div>
 <div class="cert-content">
 <h4>Microsoft Office Specialist: Excel</h4>
 <p>Microsoft · 2019</p>
@@ -1586,45 +1445,27 @@ Professional certifications and continuous learning.
 </div>
 </section>
 <!-- Hire/CTA Section -->
-<!-- Hire/CTA Section -->
 <section id="hire">
-  <div class="container">
-    <div class="cta-container reveal">
-      <h2 class="cta-title">Ready to Work <span>Together?</span></h2>
-      <p class="cta-text">
-        Whether you need a campaign that generates leads, a website that converts,
-        a brand that stands out, or content that performs - I'm available.
-        Let's talk about your project.
-      </p>
-      
-      <!-- Email Display -->
-      <p class="cta-text" style="margin-bottom: 1rem;">
-        Email me directly at: <a href="mailto:nedlsalah@gmail.com" style="color: var(--accent); font-weight: 600;">nedlsalah@gmail.com</a>
-      </p>
-      
-      <!-- Email Button -->
-      <div class="cta-buttons">
-        <a href="mailto:nedlsalah@gmail.com" class="btn btn-primary">
-          <i class="fas fa-envelope"></i> Send Email
-        </a>
-      </div>
-      
-      <div class="trust-badges">
-        <span class="trust-item">
-          <i class="fas fa-check-circle"></i> 7+ Years Experience
-        </span>
-        <span class="trust-item">
-          <i class="fas fa-check-circle"></i> UAE-Based
-        </span>
-        <span class="trust-item">
-          <i class="fas fa-check-circle"></i> End-to-End Service
-        </span>
-        <span class="trust-item">
-          <i class="fas fa-check-circle"></i> Arabic · English · French
-        </span>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="cta-container reveal">
+<h2 class="cta-title">Ready to Work <span>Together?</span></h2>
+<p class="cta-text">
+Whether you need a campaign that generates leads, a website that converts, a brand that stands out, or content that performs - I'm available. Let's talk about your project.
+</p>
+<p class="cta-text" style="margin-bottom: 1rem;">
+Email me directly at: <a href="mailto:nedlsalah@gmail.com" style="color: var(--accent); font-weight: 600;">nedlsalah@gmail.com</a>
+</p>
+<div class="cta-buttons">
+<a href="mailto:nedlsalah@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Send Email</a>
+</div>
+<div class="trust-badges">
+<span class="trust-item"><i class="fas fa-check-circle"></i> 7+ Years Experience</span>
+<span class="trust-item"><i class="fas fa-check-circle"></i> UAE-Based</span>
+<span class="trust-item"><i class="fas fa-check-circle"></i> End-to-End Service</span>
+<span class="trust-item"><i class="fas fa-check-circle"></i> Arabic · English · French</span>
+</div>
+</div>
+</div>
 </section>
 <!-- Footer -->
 <footer>
@@ -1633,25 +1474,45 @@ Professional certifications and continuous learning.
 <div class="footer-logo">NEDL<span>SALAH</span></div>
 <div class="footer-tagline">Digital Marketing · Web Development · Design · Photography</div>
 <div class="footer-socials">
-<a href="https://www.behance.net/nedlsalah" target="_blank" title="Behance">
-<i class="fab fa-behance"></i>
-</a>
- 
-<a href="https://500px.com/nedlsalah" target="_blank" title="500px">
-<i class="fab fa-500px"></i>
-</a>
+<a href="https://www.behance.net/nedlsalah" target="_blank" title="Behance"><i class="fab fa-behance"></i></a>
+<a href="https://500px.com/nedlsalah" target="_blank" title="500px"><i class="fab fa-500px"></i></a>
 </div>
 <div class="footer-copy">&copy; 2026 NEDLSALAH - All Rights Reserved</div>
 </div>
 </div>
 </footer>
 <!-- Back to Top -->
-<a href="#hero" class="back-to-top" id="backToTop">
-<i class="fas fa-arrow-up"></i>
-</a>
+<a href="#hero" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
 <!-- JavaScript -->
 <script>
-// Typing Effect
+document.addEventListener('contextmenu', function(e) {
+e.preventDefault();
+return false;
+});
+document.addEventListener('keydown', function(e) {
+if (e.ctrlKey) {
+const blocked = ['u','U','s','S','i','I','j','J','c','C','p','P'];
+if (blocked.includes(e.key)) { e.preventDefault(); return false; }
+}
+if (e.key === 'F12') { e.preventDefault(); return false; }
+if (e.ctrlKey && e.shiftKey) {
+const blocked2 = ['i','I','j','J','c','C'];
+if (blocked2.includes(e.key)) { e.preventDefault(); return false; }
+}
+return true;
+});
+document.addEventListener('dragstart', function(e) {
+e.preventDefault();
+return false;
+});
+document.addEventListener('copy', function(e) {
+e.preventDefault();
+return false;
+});
+document.addEventListener('cut', function(e) {
+e.preventDefault();
+return false;
+});
 const typedText = document.getElementById('typed-text');
 const phrases = [
 'Digital Marketing Specialist',
@@ -1663,7 +1524,7 @@ const phrases = [
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
-function type() {
+function typeEffect() {
 const currentPhrase = phrases[phraseIndex];
 if (isDeleting) {
 typedText.textContent = currentPhrase.substring(0, charIndex - 1);
@@ -1681,24 +1542,24 @@ isDeleting = false;
 phraseIndex = (phraseIndex + 1) % phrases.length;
 typeSpeed = 500;
 }
-setTimeout(type, typeSpeed);
+setTimeout(typeEffect, typeSpeed);
 }
-document.addEventListener('DOMContentLoaded', type);
-// Mobile Menu
+document.addEventListener('DOMContentLoaded', typeEffect);
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 hamburger.addEventListener('click', () => {
 hamburger.classList.toggle('active');
 navMenu.classList.toggle('open');
+const expanded = navMenu.classList.contains('open');
+hamburger.setAttribute('aria-expanded', expanded);
 });
-// Close menu on link click
 navMenu.querySelectorAll('a').forEach(link => {
 link.addEventListener('click', () => {
 hamburger.classList.remove('active');
 navMenu.classList.remove('open');
+hamburger.setAttribute('aria-expanded', 'false');
 });
 });
-// Scroll Reveal
 const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 const revealObserver = new IntersectionObserver((entries) => {
 entries.forEach(entry => {
@@ -1707,12 +1568,8 @@ entry.target.classList.add('visible');
 revealObserver.unobserve(entry.target);
 }
 });
-}, {
-threshold: 0.1,
-rootMargin: '0px 0px -50px 0px'
-});
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 revealElements.forEach(el => revealObserver.observe(el));
-// Back to Top
 const backToTop = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
 if (window.scrollY > 500) {
@@ -1721,14 +1578,12 @@ backToTop.classList.add('visible');
 backToTop.classList.remove('visible');
 }
 });
-// Active Nav Link
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-menu a');
 window.addEventListener('scroll', () => {
 let current = '';
 sections.forEach(section => {
 const sectionTop = section.offsetTop;
-const sectionHeight = section.clientHeight;
 if (scrollY >= sectionTop - 200) {
 current = section.getAttribute('id');
 }
