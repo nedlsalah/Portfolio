@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>دليل Google AI Studio الشامل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0a0c12;
+    --surface: #111420;
+    --surface2: #181c2a;
+    --border: #232840;
+    --border2: #2e3555;
+    --accent: #4f8ef7;
+    --accent2: #7c5ff7;
+    --accent3: #2de0a5;
+    --accent4: #f7a24f;
+    --accent5: #f74f7a;
+    --text: #e8eaf6;
+    --text2: #8b93b8;
+    --text3: #535c82;
+    --glow: rgba(79,142,247,0.18);
+    --glow2: rgba(124,95,247,0.14);
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: linear-gradient(135deg, #0e1220 0%, #111829 50%, #0e1220 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(79,142,247,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: relative;
+  }
+  .header-logo {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    box-shadow: 0 0 24px rgba(79,142,247,0.35);
+  }
+  .header-text h1 {
+    font-size: 22px; font-weight: 700; color: var(--text);
+    letter-spacing: -0.3px;
+  }
+  .header-text p { font-size: 13px; color: var(--text2); margin-top: 3px; }
+  .header-badges {
+    margin-right: auto;
+    display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
+  }
+  .badge-blue  { background: rgba(79,142,247,0.15); color: #7ab4ff; border: 1px solid rgba(79,142,247,0.25); }
+  .badge-green { background: rgba(45,224,165,0.12); color: #2de0a5; border: 1px solid rgba(45,224,165,0.22); }
+  .badge-purple{ background: rgba(124,95,247,0.15); color: #a48bff; border: 1px solid rgba(124,95,247,0.25); }
+  .badge-orange{ background: rgba(247,162,79,0.13); color: #f7c47a; border: 1px solid rgba(247,162,79,0.22); }
+  .badge-red   { background: rgba(247,79,122,0.13); color: #f78ca2; border: 1px solid rgba(247,79,122,0.22); }
+
+  /* ── LAYOUT ── */
+  .layout {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 100px);
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px 0 40px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border2) transparent;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+
+  .nav-section-label {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--text3); padding: 14px 20px 6px; margin-top: 4px;
+  }
+
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 20px;
+    cursor: pointer;
+    font-size: 13px; font-weight: 500; color: var(--text2);
+    border-right: 3px solid transparent;
+    transition: all 0.18s ease;
+    line-height: 1.4;
+  }
+  .nav-item:hover { background: rgba(79,142,247,0.06); color: var(--text); }
+  .nav-item.active {
+    background: rgba(79,142,247,0.1);
+    color: var(--accent);
+    border-right-color: var(--accent);
+  }
+  .nav-icon { font-size: 16px; flex-shrink: 0; }
+
+  /* ── MAIN CONTENT ── */
+  .main-content {
+    flex: 1;
+    padding: 36px 40px;
+    min-width: 0;
+    overflow-y: auto;
+  }
+
+  /* ── PAGE ── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    display: flex; align-items: flex-start; gap: 18px;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-icon {
+    width: 56px; height: 56px; border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; flex-shrink: 0;
+  }
+  .page-icon.blue   { background: rgba(79,142,247,0.12); box-shadow: 0 0 20px rgba(79,142,247,0.2); }
+  .page-icon.purple { background: rgba(124,95,247,0.12); box-shadow: 0 0 20px rgba(124,95,247,0.2); }
+  .page-icon.green  { background: rgba(45,224,165,0.10); box-shadow: 0 0 20px rgba(45,224,165,0.18); }
+  .page-icon.orange { background: rgba(247,162,79,0.12); box-shadow: 0 0 20px rgba(247,162,79,0.18); }
+  .page-icon.red    { background: rgba(247,79,122,0.12); box-shadow: 0 0 20px rgba(247,79,122,0.18); }
+  .page-icon.teal   { background: rgba(45,200,224,0.10); box-shadow: 0 0 20px rgba(45,200,224,0.16); }
+
+  .page-header-text h2 { font-size: 24px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+  .page-header-text p  { font-size: 14px; color: var(--text2); line-height: 1.7; max-width: 600px; }
+
+  /* ── INFO CARDS ── */
+  .info-cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px; margin-bottom: 30px;
+  }
+  .info-card {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 14px 16px;
+  }
+  .info-card-label { font-size: 11px; color: var(--text3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+  .info-card-val   { font-size: 13px; color: var(--text); font-weight: 500; }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-size: 16px; font-weight: 700; color: var(--text);
+    margin: 30px 0 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* ── PROMPTS ── */
+  .prompts-grid { display: flex; flex-direction: column; gap: 14px; }
+
+  .prompt-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .prompt-card:hover {
+    border-color: var(--border2);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+  .prompt-card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+    gap: 10px;
+  }
+  .prompt-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .prompt-num {
+    font-size: 11px; font-weight: 700; color: var(--text3);
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 2px 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .prompt-level {
+    font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 20px;
+  }
+  .level-beginner { background: rgba(45,224,165,0.12); color: #2de0a5; }
+  .level-medium   { background: rgba(247,162,79,0.12); color: #f7c47a; }
+  .level-advanced { background: rgba(247,79,122,0.12); color: #f78ca2; }
+
+  .copy-btn {
+    display: flex; align-items: center; gap: 5px;
+    padding: 6px 12px; border-radius: var(--radius-sm);
+    background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.2);
+    color: var(--accent); font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.18s; white-space: nowrap;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    flex-shrink: 0;
+  }
+  .copy-btn:hover { background: rgba(79,142,247,0.2); border-color: rgba(79,142,247,0.4); }
+  .copy-btn.copied { background: rgba(45,224,165,0.12); border-color: rgba(45,224,165,0.3); color: #2de0a5; }
+
+  .prompt-title {
+    font-size: 13px; font-weight: 600; color: var(--text);
+    padding: 10px 16px 4px;
+  }
+  .prompt-desc {
+    font-size: 12px; color: var(--text2); padding: 0 16px 10px; line-height: 1.6;
+  }
+
+  .prompt-body {
+    padding: 14px 16px;
+    background: #0c0f1a;
+    border-top: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: #c8d0f5;
+    line-height: 1.75;
+    white-space: pre-wrap;
+    word-break: break-word;
+    direction: rtl;
+  }
+
+  /* ── TIPS ── */
+  .tip-box {
+    background: rgba(79,142,247,0.06);
+    border: 1px solid rgba(79,142,247,0.18);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+    display: flex; gap: 10px;
+  }
+  .tip-box.green { background: rgba(45,224,165,0.06); border-color: rgba(45,224,165,0.18); }
+  .tip-box.orange{ background: rgba(247,162,79,0.06); border-color: rgba(247,162,79,0.18); }
+  .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── FEATURE LIST ── */
+  .feature-list {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px; margin-top: 14px;
+  }
+  .feature-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 12px 14px;
+  }
+  .feature-dot {
+    width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0;
+  }
+  .feature-item p { font-size: 12.5px; color: var(--text2); line-height: 1.5; }
+  .feature-item strong { color: var(--text); display: block; font-size: 13px; margin-bottom: 2px; }
+
+  /* ── TOAST ── */
+  #toast {
+    position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: var(--accent3); color: #0a1a14;
+    padding: 10px 22px; border-radius: 30px;
+    font-size: 13px; font-weight: 700;
+    opacity: 0; pointer-events: none;
+    transition: all 0.25s ease; z-index: 9999;
+  }
+  #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  hr.section-divider {
+    border: none; border-top: 1px solid var(--border);
+    margin: 28px 0;
+  }
+
+  /* ── SCROLLBAR ── */
+  .main-content::-webkit-scrollbar { width: 5px; }
+  .main-content::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: relative; overflow-x: auto; display: flex; flex-direction: row; padding: 8px 0; border-left: none; border-bottom: 1px solid var(--border); }
+    .nav-section-label { display: none; }
+    .nav-item { white-space: nowrap; border-right: none; border-bottom: 3px solid transparent; padding: 8px 14px; }
+    .nav-item.active { border-right: none; border-bottom-color: var(--accent); }
+    .main-content { padding: 24px 18px; }
+    .site-header { padding: 20px; }
+    .header-badges { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">✦</div>
+    <div class="header-text">
+      <h1>دليل Google AI Studio الشامل</h1>
+      <p>مرجعك الكامل لكل مكوّنات وميزات المنصة — عربي، جاهز للاستخدام</p>
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-blue">Gemini 2.0 Flash</span>
+      <span class="badge badge-green">مجاني ومتاح</span>
+      <span class="badge badge-purple">9 أقسام</span>
+    </div>
+  </div>
+</header>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section-label">المكوّنات الأساسية</div>
+
+    <div class="nav-item active" data-page="prompt" onclick="switchPage('prompt', this)">
+      <span class="nav-icon">✍️</span> Prompt — النص الحر
+    </div>
+    <div class="nav-item" data-page="chat" onclick="switchPage('chat', this)">
+      <span class="nav-icon">💬</span> Chat — المحادثة
+    </div>
+    <div class="nav-item" data-page="image" onclick="switchPage('image', this)">
+      <span class="nav-icon">🎨</span> توليد الصور
+    </div>
+    <div class="nav-item" data-page="video" onclick="switchPage('video', this)">
+      <span class="nav-icon">🎬</span> فهم الفيديو
+    </div>
+    <div class="nav-item" data-page="audio" onclick="switchPage('audio', this)">
+      <span class="nav-icon">🎙️</span> فهم الصوت
+    </div>
+
+    <div class="nav-section-label">الميزات المتقدمة</div>
+
+    <div class="nav-item" data-page="files" onclick="switchPage('files', this)">
+      <span class="nav-icon">📄</span> إدخال الملفات
+    </div>
+    <div class="nav-item" data-page="code" onclick="switchPage('code', this)">
+      <span class="nav-icon">⚙️</span> تنفيذ الكود
+    </div>
+    <div class="nav-item" data-page="functions" onclick="switchPage('functions', this)">
+      <span class="nav-icon">🔗</span> Function Calling
+    </div>
+    <div class="nav-item" data-page="grounding" onclick="switchPage('grounding', this)">
+      <span class="nav-icon">🌐</span> Grounding — البحث
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- ════════════════════════════════ PAGE: PROMPT ════════════════════════════════ -->
+    <div class="page active" id="page-prompt">
+      <div class="page-header">
+        <div class="page-icon blue">✍️</div>
+        <div class="page-header-text">
+          <h2>Prompt — النص الحر (Freeform)</h2>
+          <p>واجهة الإدخال الأساسية في AI Studio. يمكنك كتابة أي تعليمة وتلقّي رد فوري من النموذج، مع تخصيص درجة الحرارة، وتعليمات النظام، وعدد الرموز المُخرجة. الأنسب للتجارب السريعة والاستخدامات الأحادية.</p>
+        </div>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-label">النموذج الافتراضي</div>
+          <div class="info-card-val">Gemini 2.0 Flash</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">درجة الحرارة</div>
+          <div class="info-card-val">0.0 — 2.0</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">الحد الأقصى للرموز</div>
+          <div class="info-card-val">حتى 8192 token</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">System Instructions</div>
+          <div class="info-card-val">متاحة ومخصَّصة</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <span class="tip-icon">💡</span>
+        <span>اضبط درجة الحرارة على <strong>0</strong> للإجابات الحتمية والدقيقة، وارفعها تدريجياً نحو <strong>1.5</strong> للأفكار الإبداعية والمتنوعة.</span>
+      </div>
+
+      <div class="section-title">📋 بروميبتات جاهزة للنسخ والتشغيل</div>
+
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#01</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-blue">System Instruction</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">كاتب محترف بشخصية محددة</div>
+          <div class="prompt-desc">ضَع هذا النص في خانة System Instructions لمنح النموذج شخصية ثابتة طوال الجلسة.</div>
+          <div class="prompt-body">أنت كاتب محتوى عربي محترف متخصص في المقالات التقنية. أسلوبك: واضح، دقيق، وخالٍ من الحشو. عندما تُجيب:
+- ابدأ دائماً بالفكرة الرئيسية مباشرةً
+- استخدم نقاط واضحة عند سرد الخطوات
+- اختتم بـ"خلاصة القول" تُلخّص أبرز نقطتين
+- تجنّب التكرار والعبارات الفارغة</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#02</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-blue">تحليل نص</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تحليل مقالة وتلخيصها</div>
+          <div class="prompt-desc">الصق أي نص طويل بعد هذه التعليمة لتحصل على تلخيص منظم.</div>
+          <div class="prompt-body">حلّل النص التالي وقدّم:
+
+1. **الفكرة الرئيسية** (جملة واحدة)
+2. **أبرز 5 نقاط** (نقاط مرقمة)
+3. **الجمهور المستهدف** (من يفيد هذا النص؟)
+4. **نقاط القوة والضعف** (جدول من عمودين)
+5. **اقتراح للتحسين** (فقرة قصيرة)
+
+---
+[الصق النص هنا]</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#03</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-purple">إبداعي</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">كتابة محتوى تسويقي لمنتج</div>
+          <div class="prompt-desc">استبدل المتغيرات بين الأقواس بتفاصيل منتجك.</div>
+          <div class="prompt-body">اكتب محتوى تسويقياً متكاملاً لـ [اسم المنتج] الذي يُقدّم [الفائدة الرئيسية].
+
+الجمهور المستهدف: [وصف العميل المثالي]
+نبرة العلامة التجارية: [احترافية / ودية / جريئة]
+القناة: [إنستقرام / إيميل / موقع ويب]
+
+المطلوب:
+- عنوان رئيسي جذّاب (10 كلمات بحد أقصى)
+- 3 عناوين بديلة للاختبار A/B
+- وصف قصير (60 كلمة)
+- 5 نقاط بيع فريدة (Bullet Points)
+- دعوة للتفاعل (CTA) واضحة وقوية
+- 3 هاشتاقات مقترحة</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#04</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-green">إنتاجية</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">توليد أسئلة مقابلة عمل احترافية</div>
+          <div class="prompt-desc">مثالي لمديري التوظيف وفرق الموارد البشرية.</div>
+          <div class="prompt-body">أنا مدير توظيف أبحث عن [المسمى الوظيفي] في شركة [مجال الشركة].
+
+المهارات المطلوبة: [قائمة المهارات]
+سنوات الخبرة: [X سنوات]
+نوع الدور: [تقني / إداري / إبداعي]
+
+أنشئ:
+1. **5 أسئلة سلوكية** بصيغة STAR (ابدأ بـ "حدّثني عن موقف...")
+2. **5 أسئلة تقنية** تقيس الكفاءة الفعلية
+3. **3 أسئلة ثقافية** تقيس التوافق مع قيم الفريق
+4. **سؤال ختامي إبداعي** يكشف طريقة التفكير
+
+لكل سؤال: أضف المهارة التي يقيسها بين قوسين.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#05</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-orange">Temperature: 0</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">توليد بيانات JSON منظمة ومضبوطة</div>
+          <div class="prompt-desc">اضبط درجة الحرارة على 0 للحصول على JSON صالح 100% دون أخطاء.</div>
+          <div class="prompt-body">أنشئ قاعدة بيانات JSON لـ 5 منتجات افتراضية في متجر إلكتروني للإلكترونيات.
+
+متطلبات دقيقة:
+- أعد JSON فقط، بدون أي نص إضافي أو ماركداون
+- البنية المطلوبة لكل منتج:
+  {
+    "id": "string (UUID format)",
+    "name": "string (Arabic)",
+    "category": "string",
+    "price": number (USD),
+    "discount": number (0-50),
+    "inStock": boolean,
+    "specs": { "key": "value" },
+    "tags": ["string array, min 3"],
+    "rating": number (1.0-5.0)
+  }
+- تنوّع الفئات: هاتف، لابتوب، سماعة، ساعة ذكية، كاميرا
+- الأسعار واقعية وتعكس السوق الحالي</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#06</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-red">Few-Shot</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تصنيف المشاعر بأمثلة (Few-Shot)</div>
+          <div class="prompt-desc">تعليم النموذج نمطاً محدداً عبر أمثلة قبل الطلب الحقيقي.</div>
+          <div class="prompt-body">صنّف مشاعر التعليقات التالية باستخدام الأمثلة كمرجع.
+
+[أمثلة التدريب]
+تعليق: "المنتج رائع، سعيد جداً بالشراء!" → إيجابي (ثقة: 95%)
+تعليق: "التوصيل تأخر كثيراً وكان مكسوراً" → سلبي (ثقة: 98%)
+تعليق: "المنتج عادي، لا بأس به" → محايد (ثقة: 80%)
+تعليق: "أنا في حيرة، بعض الأجزاء جيدة والبعض سيء" → مختلط (ثقة: 70%)
+
+[التعليقات للتصنيف]
+1. "لن أشتري من هذا المتجر مجدداً، خدمة مزرية"
+2. "وصل بسرعة ومضبوط تماماً، شكراً!"
+3. "السعر مقبول لكن الجودة دون المستوى المتوقع"
+4. "ممتاز في الشكل، لكن البطارية ضعيفة"
+5. "لا أعلم ماذا أقول، التجربة غريبة"
+
+الإخراج: جدول بأعمدة: التعليق | التصنيف | درجة الثقة | السبب</div>
+        </div>
+
+      </div><!-- /prompts-grid -->
+    </div><!-- /page-prompt -->
+
+
+    <!-- ════════════════════════════════ PAGE: CHAT ════════════════════════════════ -->
+    <div class="page" id="page-chat">
+      <div class="page-header">
+        <div class="page-icon purple">💬</div>
+        <div class="page-header-text">
+          <h2>Chat — واجهة المحادثة متعددة الأدوار</h2>
+          <p>واجهة تفاعلية تُتيح محادثة مستمرة مع الذاكرة السياقية. يتذكّر النموذج ما قيل في الرسائل السابقة ويبني عليه، مما يجعلها مثالية للمساعدين الشخصيين، والتعليم، والاستشارات المتتالية.</p>
+        </div>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-label">طول السياق</div>
+          <div class="info-card-val">1M+ token</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">أدوار المحادثة</div>
+          <div class="info-card-val">User / Model</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">محرّر السياق</div>
+          <div class="info-card-val">قابل للتعديل يدوياً</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">نماذج مدعومة</div>
+          <div class="info-card-val">Flash / Pro / Exp</div>
+        </div>
+      </div>
+
+      <div class="tip-box green">
+        <span class="tip-icon">🧠</span>
+        <span>يمكنك تعديل أي رسالة سابقة من النموذج مباشرةً لتوجيه المحادثة نحو مسار مختلف — ميزة حصرية في AI Studio.</span>
+      </div>
+
+      <div class="section-title">📋 بروميبتات جاهزة للنسخ والتشغيل</div>
+
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#01</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-purple">رسالة أولى</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">بدء محادثة تعليمية تفاعلية</div>
+          <div class="prompt-desc">ابدأ الجلسة بهذه الرسالة لإنشاء معلّم شخصي متكيّف.</div>
+          <div class="prompt-body">سأتعلم منك [الموضوع] من مستوى المبتدئ حتى المتقدم.
+
+أسلوب التدريس الذي أفضّله:
+- اشرح كل مفهوم بمثال واقعي قبل النظرية
+- بعد كل مفهوم، اطرح عليّ سؤالاً للتحقق من الفهم
+- إذا أخطأت، لا تُعطِني الإجابة مباشرةً — بل وجّهني بأسئلة
+- كل 3 مفاهيم، أعطني ملخصاً سريعاً لما تعلّمناه
+- إذا قلت "متأكد" فانتقل للمستوى التالي
+
+مستواي الحالي: [مبتدئ / متوسط]
+الوقت المتاح لكل جلسة: [30 دقيقة]
+
+ابدأ بسؤالي: ماذا أعرف مسبقاً عن هذا الموضوع؟</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#02</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-blue">مساعد شخصي</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">System Instruction: مساعد إنتاجية</div>
+          <div class="prompt-desc">الصق هذا في System Instructions لمساعد يومي.</div>
+          <div class="prompt-body">أنت "نور" — مساعدي الشخصي الذكي للإنتاجية اليومية.
+
+شخصيتك: منظّم، مباشر، تحفّزني بلطف دون إسهاب.
+
+مهامك الثابتة:
+1. عند بدء كل محادثة، اسألني: "ما أولوياتك اليوم؟"
+2. حوّل أي مهمة مبهمة إلى خطوات صغيرة قابلة للتنفيذ
+3. إذا ذكرت مهمة تستغرق أكثر من ساعة، اقترح تقسيمها
+4. تذكّر ما قيل في السياق وأشر إليه عند الحاجة
+5. اختم كل رد بـ "✦ التالي:" وخطوة واحدة فورية واضحة
+
+القاعدة الذهبية: ردودك تكون موجزة — لا فقرة واحدة تزيد عن 4 أسطر.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#03</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-orange">محاكاة حوار</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">محاكاة مقابلة عمل حقيقية</div>
+          <div class="prompt-desc">تدرّب على المقابلات بتجربة تفاعلية واقعية.</div>
+          <div class="prompt-body">دورك: أنت محاور متمرّس في شركة [اسم الشركة أو المجال].
+دوري: مرشّح للوظيفة [المسمى الوظيفي].
+
+قواعد المحاكاة:
+- ابدأ بالتعريف بنفسك كمحاور ثم بسؤال "أخبرني عن نفسك"
+- اطرح سؤالاً واحداً في كل مرة فقط
+- بعد كل إجابة مني: أعطني تقييماً سريعاً (💚 قوي / 🟡 يحتاج تطوير / 🔴 ضعيف) مع سبب مختصر
+- استمر في أسئلة تعمّق الموضوع إذا كانت إجابتي سطحية
+- بعد 8 أسئلة، أعطني تقرير أداء شامل مع نقاط للتحسين
+
+ابدأ المحاكاة الآن.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#04</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-green">نقاش فكري</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">جلسة عصف ذهني تفاعلية للمشاريع</div>
+          <div class="prompt-desc">استكشف أفكار مشروعك مع نموذج يُحفّز التفكير النقدي.</div>
+          <div class="prompt-body">أريد عصفاً ذهنياً لـ [وصف المشروع أو الفكرة].
+
+دورك في هذه الجلسة:
+1. لا تعطيني قوائم جاهزة — بل اسألني أسئلة تكشف ما لم أفكّر فيه
+2. تحدّ افتراضاتي بـ "ماذا لو كان العكس صحيحاً؟"
+3. اقترح زاوية غير متوقعة بعد كل 2-3 تبادلات
+4. إذا ركّزت كثيراً على جانب واحد، وجّهني لجانب آخر
+5. بعد 10 دقائق من الحوار، لخّص أفضل 3 أفكار نابعة من النقاش
+
+ابدأ بسؤال واحد عميق عن جوهر فكرتي.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#05</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-red">Multi-Role</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">لجنة خبراء افتراضية (أدوار متعددة)</div>
+          <div class="prompt-desc">اجعل النموذج يُحاكي آراء خبراء متعددين من زوايا مختلفة.</div>
+          <div class="prompt-body">أريدك أن تلعب دور لجنة من 4 خبراء يناقشون: [الموضوع أو القرار]
+
+الخبراء:
+1. **د. ريم** — خبيرة اقتصادية، تفكير تحليلي، تركّز على الأرقام والجدوى
+2. **أحمد** — رائد أعمال، تفكير عملي، يبحث عن الفرص الفورية
+3. **سارة** — خبيرة مخاطر، تتساءل دائماً "ما الذي قد يسوء؟"
+4. **كريم** — مبتكر، يفكّر خارج الصندوق، يقترح الحلول غير التقليدية
+
+تعليمات:
+- كل خبير يُعبّر عن وجهة نظره الفريدة في 3 أسطر
+- بعد جولة آراء، اسألني: "ما رأيك؟ مع من تتفق؟"
+- استمر في الحوار بناءً على ردودي
+- في النهاية: اعرض توصية مجمّعة من اللجنة كاملة</div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════ PAGE: IMAGE ════════════════════════════════ -->
+    <div class="page" id="page-image">
+      <div class="page-header">
+        <div class="page-icon green">🎨</div>
+        <div class="page-header-text">
+          <h2>توليد الصور — Imagen 3 & Gemini</h2>
+          <p>منصة AI Studio تدعم توليد صور احترافية باستخدام نموذج Imagen 3 من Google، إلى جانب قدرات Gemini على فهم الصور وتعديلها. مثالي للتصميم، والإعلانات، وإنشاء الأصول البصرية.</p>
+        </div>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-label">النماذج المتاحة</div>
+          <div class="info-card-val">Imagen 3 / Gemini</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">الدقة</div>
+          <div class="info-card-val">حتى 1024×1024</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">الصور في الطلب</div>
+          <div class="info-card-val">حتى 4 صور</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">نسب الأبعاد</div>
+          <div class="info-card-val">1:1 / 16:9 / 9:16</div>
+        </div>
+      </div>
+
+      <div class="tip-box orange">
+        <span class="tip-icon">🎯</span>
+        <span>لصور المنتجات: ابدأ دائماً بـ "Create from attached image" ثم وصف بيئة الصورة وأسلوبها. كلّما كان وصفك أدق، كانت الصورة أقرب لتصوّرك.</span>
+      </div>
+
+      <div class="section-title">📋 بروميبتات جاهزة للنسخ والتشغيل</div>
+
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#01</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-green">صورة منتج</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">صورة منتج تجارية احترافية</div>
+          <div class="prompt-desc">الصق صورة منتجك ثم استخدم هذا البروميبت.</div>
+          <div class="prompt-body">Create from attached image.
+
+Transform this product into a high-end commercial photograph:
+- Background: Pure white studio setup with subtle drop shadow
+- Lighting: Three-point studio lighting, soft key light from the right
+- Surface: Clean marble or frosted glass surface reflection below
+- Angle: Slight 15-degree rotation for dynamic feel
+- Style: Apple product photography aesthetic — crisp, clean, premium
+- Resolution feel: Ultra-sharp details, no noise
+- Add-ons: Small lifestyle prop contextually relevant to the product
+
+اجعل المنتج يبدو وكأنه يُعلَن في حملة عالمية.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#02</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-blue">إعلان رقمي</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">بانر إعلاني لوسائل التواصل</div>
+          <div class="prompt-desc">لتصميم بانرات إعلانية جاهزة للنشر.</div>
+          <div class="prompt-body">Create from attached image.
+
+Design a social media advertisement banner featuring this product:
+- Format: Instagram square (1:1 ratio)
+- Color scheme: Modern and bold — dark navy background with gold accents
+- Typography area: Leave clean space on the left third for Arabic text overlay
+- Mood: Luxury lifestyle, aspirational, premium brand feel
+- Lighting: Dramatic studio light with gentle lens flare
+- Product placement: Center-right, slightly elevated
+- Background elements: Subtle geometric shapes or bokeh effect
+
+النتيجة يجب أن تكون جاهزة للنشر الفوري على إنستقرام.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#03</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-purple">برanding</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">محاكاة منتج على مواد العلامة التجارية</div>
+          <div class="prompt-desc">أرفق شعار علامتك ثم طبّقه على مواد تسويقية.</div>
+          <div class="prompt-body">Create from attached image.
+
+Apply this logo to create a cohesive brand mockup collection showing:
+1. Premium business card on textured dark background — logo embossed in gold foil
+2. Minimalist white coffee cup with logo printed in matte black
+3. Canvas tote bag with logo screen-printed
+4. A4 letterhead with logo positioned top-right
+
+Style for all: Clean, Scandinavian minimalism, neutral backgrounds, natural soft shadows.
+
+العرض: كل المحاكيات في صورة واحدة منظّمة كـ "brand board".</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#04</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-orange">Lifestyle</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">صورة منتج في بيئة حياتية واقعية</div>
+          <div class="prompt-desc">أرفق صورة المنتج لوضعه في سياق حياتي جذاب.</div>
+          <div class="prompt-body">Create from attached image.
+
+Place this product in a natural lifestyle context:
+- Setting: Cozy modern home office, warm afternoon light through window
+- Surface: Wooden desk with minimal clutter — a book, a plant, a coffee mug nearby
+- Model interaction: Human hands (no face) naturally reaching toward or holding the product
+- Lighting: Golden hour sunlight streaming from the left, warm color temperature (3200K feel)
+- Atmosphere: Calm, productive, aspirational "work from home" aesthetic
+- Camera angle: 45-degree overhead "flat lay" style
+- Depth of field: Soft background blur (f/1.8 equivalent)</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#05</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-red">3D & CGI</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تصيير ثلاثي الأبعاد للمنتج (CGI)</div>
+          <div class="prompt-desc">حوّل صورة منتجك إلى تصيير CGI احترافي.</div>
+          <div class="prompt-body">Create from attached image.
+
+Render this product as a photorealistic CGI 3D visualization:
+- Material: Maintain original product materials but enhance with hyper-realistic textures
+- Reflections: Add realistic PBR (Physically Based Rendering) reflections on surfaces
+- Lighting: HDRI environment lighting — bright studio with soft area lights
+- Background: Pure black or deep midnight blue gradient
+- Special effect: Subtle caustic light patterns on the surface beneath
+- Camera: Low angle, dramatic perspective to make product feel monumental
+- Post-processing: Slight chromatic aberration, film grain (5%), color grading: teal shadows + warm highlights
+
+أسلوب: يشبه إعلانات Apple أو Mercedes — رقي مطلق.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#06</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-blue">بدون صورة</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">توليد خلفية إبداعية من النص فقط</div>
+          <div class="prompt-desc">بدون رفع صورة — فقط نص لتوليد خلفية جاهزة.</div>
+          <div class="prompt-body">Generate a stunning abstract background image for a tech startup's website hero section:
+
+Concept: "The intersection of human creativity and artificial intelligence"
+Visual elements:
+- Flowing neural network lines in electric blue and violet
+- Subtle human hand outline merging with digital circuitry
+- Deep space-like dark background (#050810)
+- Glowing particle effects suggesting data flow
+- No text, no logos, no specific symbols
+
+Technical specs:
+- Landscape orientation (16:9)
+- High contrast, suitable for white text overlay
+- Ethereal, futuristic mood
+- Avoid clichés: no robots, no brains, no binary code patterns</div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════ PAGE: VIDEO ════════════════════════════════ -->
+    <div class="page" id="page-video">
+      <div class="page-header">
+        <div class="page-icon orange">🎬</div>
+        <div class="page-header-text">
+          <h2>فهم الفيديو — Video Understanding</h2>
+          <p>قدرة استثنائية تُتيح رفع ملفات الفيديو وطرح أسئلة عليها، استخراج المعلومات، تحليل المشاهد، وتحديد التسلسل الزمني للأحداث. يدعم Gemini ما يصل إلى ساعة كاملة من الفيديو.</p>
+        </div>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-label">الحد الأقصى</div>
+          <div class="info-card-val">60 دقيقة فيديو</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">الصيغ المدعومة</div>
+          <div class="info-card-val">MP4, AVI, MOV, MKV</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">نوع التحليل</div>
+          <div class="info-card-val">مرئي + صوتي معاً</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">الطوابع الزمنية</div>
+          <div class="info-card-val">دقيقة:ثانية</div>
+        </div>
+      </div>
+
+      <div class="section-title">📋 بروميبتات جاهزة للنسخ والتشغيل</div>
+
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#01</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-orange">ملخص</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تلخيص فيديو كامل بنقاط رئيسية</div>
+          <div class="prompt-desc">ارفع أي فيديو وطبّق هذا البروميبت للحصول على ملخص فوري.</div>
+          <div class="prompt-body">حلّل هذا الفيديو وقدّم:
+
+**الملخص التنفيذي** (فقرة من 5 أسطر)
+تصف: الموضوع، الهدف، والجمهور المستهدف.
+
+**خط الزمن الرئيسي**
+قائمة بأهم الأحداث أو النقاط مع الطوابع الزمنية:
+[00:00] — [الحدث/النقطة]
+[xx:xx] — [الحدث/النقطة]
+
+**أبرز 5 رسائل رئيسية**
+نقاط مرقمة بأهم ما جاء في الفيديو.
+
+**الخلاصة والتوصية**
+جملتان تصفان قيمة هذا الفيديو وإذا كان يستحق المشاهدة الكاملة.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#02</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-blue">تعليمي</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">استخراج فصول الفيديو التعليمي</div>
+          <div class="prompt-desc">مثالي لمقاطع الدورات والمحاضرات الطويلة.</div>
+          <div class="prompt-body">هذا فيديو تعليمي. المطلوب:
+
+1. **قسّمه إلى فصول** مع:
+   - عنوان وصفي لكل فصل
+   - الطابع الزمني للبداية والنهاية [00:00 - 00:00]
+   - ملخص من 2 جملة لمحتوى الفصل
+   - مستوى الصعوبة: (مبتدئ / متوسط / متقدم)
+
+2. **قائمة المفاهيم الجديدة** المُدرَّسة في الفيديو
+
+3. **أسئلة مراجعة** — 2 سؤال لكل فصل رئيسي
+
+4. **المتطلبات السابقة** — ماذا يجب أن يعرف المشاهد مسبقاً؟</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#03</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-purple">تحليل بصري</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تحليل فيديو الاجتماع واستخراج القرارات</div>
+          <div class="prompt-desc">ارفع تسجيل اجتماع للحصول على محضر اجتماع فوري.</div>
+          <div class="prompt-body">هذا تسجيل اجتماع عمل. أنشئ محضر اجتماع رسمي يتضمن:
+
+**معلومات الاجتماع**
+- المدة الإجمالية:
+- عدد المشاركين المُكتشَف:
+- الموضوع الرئيسي (من السياق):
+
+**نقاط النقاش الرئيسية** (مرتّبة زمنياً مع طوابع)
+
+**القرارات المتخذة** ✅
+قائمة واضحة لكل قرار نهائي تم التوافق عليه.
+
+**مهام العمل (Action Items)** 📋
+| المهمة | المسؤول (إن ذُكر) | الموعد النهائي |
+
+**النقاط المعلّقة** ❓
+أي موضوع لم يُحسم أو يحتاج متابعة.
+
+**توصية المتابعة**
+ما الخطوة التالية المنطقية بعد هذا الاجتماع؟</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#04</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-red">تحليل أداء</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تحليل فيديو عرض تقديمي (Pitch)</div>
+          <div class="prompt-desc">ارفع فيديو عرضك الترويجي لتحليل الأداء.</div>
+          <div class="prompt-body">حلّل هذا العرض التقديمي من زاوية الأداء والإقناع:
+
+**تحليل لغة الجسد** 👤
+- الثقة (التواصل البصري، الوقفة، الإيماءات)
+- إيقاع الحديث وتنوّع النبرة
+- لحظات التردد أو الضعف (مع الطوابع الزمنية)
+
+**تحليل المحتوى** 📊
+- قوة الافتتاح (من 10): وسبب التقييم
+- وضوح مشكلة السوق (من 10)
+- إقناعية الحل المقترح (من 10)
+- قوة البيانات والدليل (من 10)
+- الدعوة للتفاعل (CTA) (من 10)
+
+**المقارنة بمعايير أفضل Pitches**
+ما الذي يفعله أفضل رواد الأعمال في هذه النقاط وكيف يختلف هذا العرض؟
+
+**خطة التحسين**
+أولويات التحسين الثلاث الأكثر أثراً.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#05</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-green">محتوى</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">إعادة توظيف محتوى الفيديو لقنوات متعددة</div>
+          <div class="prompt-desc">حوّل فيديو واحداً إلى محتوى متعدد القنوات.</div>
+          <div class="prompt-body">استخرج من هذا الفيديو محتوى جاهزاً لنشره على منصات مختلفة:
+
+**1. Twitter/X Thread** (15 تغريدة بحد أقصى)
+- التغريدة الأولى: خطّاف جذّاب مع رقم أو إحصائية
+- التغريدات 2-13: فكرة واحدة قوية لكل تغريدة
+- الأخيرتان: CTA + تلخيص
+
+**2. LinkedIn Post**
+- 150-200 كلمة، أسلوب قصة شخصية
+- 3 نقاط رئيسية كـ bullet points
+
+**3. Newsletter Excerpt** (250 كلمة)
+بأسلوب "رسالة من خبير لقارئه"
+
+**4. 5 عناوين Reel/Short**
+عناوين جذّابة لمقاطع 60 ثانية مقترحة من الفيديو
+
+**5. FAQ**
+5 أسئلة شائعة يسألها الجمهور عن هذا المحتوى مع إجاباتها</div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════ PAGE: AUDIO ════════════════════════════════ -->
+    <div class="page" id="page-audio">
+      <div class="page-header">
+        <div class="page-icon teal">🎙️</div>
+        <div class="page-header-text">
+          <h2>فهم الصوت — Audio Understanding</h2>
+          <p>يستطيع Gemini تحليل ملفات الصوت مباشرةً: التفريغ النصي، تحليل النبرة، التعرف على المتحدثين، واستخلاص المعلومات من البودكاست والمقابلات والمحادثات الصوتية.</p>
+        </div>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-label">الصيغ المدعومة</div>
+          <div class="info-card-val">MP3, WAV, M4A, FLAC</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">الحد الأقصى</div>
+          <div class="info-card-val">9.5 ساعة صوت</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">التفريغ النصي</div>
+          <div class="info-card-val">عربي وأكثر من 40 لغة</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">التمييز بين المتحدثين</div>
+          <div class="info-card-val">دعم متعدد المتحدثين</div>
+        </div>
+      </div>
+
+      <div class="section-title">📋 بروميبتات جاهزة للنسخ والتشغيل</div>
+
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#01</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-blue">نسخ نصي</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تفريغ نصي احترافي مع تمييز المتحدثين</div>
+          <div class="prompt-desc">ارفع ملف الصوت واحصل على نص منظّم.</div>
+          <div class="prompt-body">فرّغ هذا التسجيل الصوتي نصياً مع مراعاة:
+
+**تنسيق الإخراج:**
+[المتحدث A — 00:00]: نص الكلام...
+[المتحدث B — 00:35]: نص الكلام...
+
+**قواعد التفريغ:**
+- ميّز بين المتحدثين بحروف (A, B, C) أو أسماء إن ذُكرت
+- أضف الطابع الزمني كل 30 ثانية تقريباً
+- حافظ على الكلمات كما قيلت (لا تصحّح الأسلوب)
+- ضع [غير واضح] للكلمات الغير مفهومة
+- ضع [ضحك] أو [صمت] للحالات غير الكلامية المهمة
+- لا تحذف أي جملة
+
+بعد التفريغ: أعطني عدد الكلمات الإجمالي ومدة التسجيل.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#02</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-purple">بودكاست</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تحليل حلقة بودكاست واستخراج المحتوى</div>
+          <div class="prompt-desc">حوّل حلقة بودكاستك إلى أصول محتوى متعددة.</div>
+          <div class="prompt-body">هذا تسجيل حلقة بودكاست. المطلوب:
+
+**1. بطاقة الحلقة**
+- العنوان المقترح (جذّاب، SEO-friendly)
+- الوصف (150 كلمة لـ Spotify / Apple Podcasts)
+- 5 كلمات مفتاحية
+
+**2. أبرز اقتباسات الحلقة**
+3-5 اقتباسات قوية قابلة للنشر على وسائل التواصل.
+لكل اقتباس: [الطابع الزمني] + النص
+
+**3. ملخص الحلقة** (للمستمع المشغول)
+5 نقاط رئيسية في 3 أسطر لكل نقطة.
+
+**4. مقترحات Follow-up**
+3 موضوعات للحلقات القادمة مستوحاة من هذه الحلقة.
+
+**5. تقييم الحلقة** (من 10) في:
+- جودة المعلومات | تنوع الأسئلة | ديناميكية الحوار</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#03</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-orange">تحليل نبرة</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تحليل المشاعر والنبرة في تسجيل صوتي</div>
+          <div class="prompt-desc">مثالي لتحليل مكالمات خدمة العملاء والمبيعات.</div>
+          <div class="prompt-body">حلّل هذا التسجيل الصوتي من منظور المشاعر والنبرة:
+
+**خريطة المشاعر الزمنية**
+ارسم جدولاً يُظهر تطوّر المشاعر عبر التسجيل:
+| الدقيقة | المتحدث | المشاعر السائدة | الثقة |
+
+**مؤشرات النبرة**
+- وتيرة الكلام: (سريع/طبيعي/بطيء) — وماذا يعني ذلك؟
+- تنوّع التنغيم: (غني/معتدل/مسطّح)
+- لحظات التوتر: طوابع زمنية محددة مع السبب المحتمل
+- لحظات الراحة والإيجابية: طوابع مع السبب
+
+**ملخص العلاقة الديناميكية** (إن كان هناك متحدد متعدد)
+كيف تفاعل المتحدثون عاطفياً مع بعضهم؟
+
+**توصية قابلة للتطبيق**
+ما الذي كان يمكن قوله بشكل مختلف لتحسين مجريات المحادثة؟</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#04</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-red">بحث</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تحليل مقابلة بحثية واستخراج الأفكار</div>
+          <div class="prompt-desc">للباحثين وفرق UX Research والصحفيين.</div>
+          <div class="prompt-body">هذه مقابلة بحثية [نوع البحث: UX / أكاديمي / صحفي].
+
+المطلوب تحليله:
+
+**1. الاستجابات المحورية**
+استخرج أهم 5-7 لحظات محورية في المقابلة مع الطوابع الزمنية والنص الحرفي.
+
+**2. الأنماط المتكررة**
+ما الأفكار أو المشاعر التي تكرّرت أكثر من مرة؟
+
+**3. ما قيل "بين السطور"**
+لحظات التردد، الصمت، أو التحويل — ماذا يُشير إليه ذلك؟
+
+**4. الفجوات في البيانات**
+ما الأسئلة التي كان يجب طرحها ولم تُطرح؟
+
+**5. Quotes قابلة للاستشهاد** (لو نشر)
+3 اقتباسات قوية مع السياق المحيط بها.
+
+**6. خلاصة للتقرير**
+فقرة واحدة كما تظهر في تقرير بحثي رسمي.</div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════ PAGE: FILES ════════════════════════════════ -->
+    <div class="page" id="page-files">
+      <div class="page-header">
+        <div class="page-icon blue">📄</div>
+        <div class="page-header-text">
+          <h2>إدخال الملفات — Document & File Input</h2>
+          <p>يمكنك رفع ملفات PDF والكود البرمجي وجداول CSV وملفات النصوص، ثم طرح أسئلة عليها أو تحليلها أو استخراج المعلومات منها. يُعالج Gemini الملف كاملاً في نافذة السياق.</p>
+        </div>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-label">أنواع الملفات</div>
+          <div class="info-card-val">PDF, CSV, TXT, Code</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">الحجم الأقصى</div>
+          <div class="info-card-val">2GB للملف الواحد</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">عدد الملفات</div>
+          <div class="info-card-val">ملفات متعددة في آنٍ</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">حفظ الملفات</div>
+          <div class="info-card-val">48 ساعة في Files API</div>
+        </div>
+      </div>
+
+      <div class="section-title">📋 بروميبتات جاهزة للنسخ والتشغيل</div>
+
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#01</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-blue">PDF</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تحليل تقرير PDF واستخراج الأرقام</div>
+          <div class="prompt-desc">مثالي للتقارير المالية والسنوية وتقارير الأبحاث.</div>
+          <div class="prompt-body">حلّل هذا التقرير PDF وقدّم:
+
+**1. البيانات الكمية الرئيسية**
+استخرج كل الأرقام والإحصائيات والنسب المهمة في جدول:
+| المؤشر | القيمة | الوحدة | الصفحة |
+
+**2. المقارنات الزمنية**
+أي أرقام تُقارن بفترات سابقة؟ ما التغيير النسبي؟
+
+**3. الرسوم البيانية المذكورة**
+صف ما تُظهره كل رسمة أو جدول في الوثيقة.
+
+**4. الاستنتاجات الرئيسية** (بكلماتك)
+ما الصورة الكاملة التي تُرسمها هذه الأرقام مجتمعةً؟
+
+**5. تساؤلات تستحق البحث**
+3 أسئلة يُثيرها هذا التقرير ولا تجيب عنها البيانات المتاحة.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#02</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-green">CSV</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تحليل بيانات CSV واكتشاف الأنماط</div>
+          <div class="prompt-desc">ارفع ملف CSV للحصول على تحليل بياناتي شامل.</div>
+          <div class="prompt-body">حلّل هذا الملف CSV وقدّم تقريراً شاملاً:
+
+**فهم البيانات أولاً:**
+- عدد الصفوف والأعمدة
+- نوع كل عمود (رقمي / نصي / تاريخي)
+- القيم الفارغة أو المفقودة في كل عمود
+
+**الإحصاء الوصفي للأعمدة الرقمية:**
+المتوسط، الوسيط، الأدنى، الأعلى، الانحراف المعياري.
+
+**الأنماط والعلاقات:**
+- أي عمودان يبدو أنهما مترابطان؟
+- أي قيم تبدو شاذة (Outliers)؟
+- أي اتجاه زمني واضح (إن وجد تاريخ)؟
+
+**توصيات التحليل:**
+ما نوع التحليل أو الرسم البياني الأنسب لهذه البيانات؟
+
+**أسئلة مقترحة:**
+3 أسئلة تحليلية يمكن الإجابة عنها بهذه البيانات.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#03</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-purple">عقد</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">مراجعة عقد قانوني واستخراج الشروط</div>
+          <div class="prompt-desc">ملاحظة: هذا لأغراض إعلامية، وليس استشارة قانونية.</div>
+          <div class="prompt-body">راجع هذا العقد واستخرج:
+
+**1. الأطراف المشاركة وأدوارهم**
+
+**2. الالتزامات الرئيسية لكل طرف**
+جدول: الطرف | الالتزام | الموعد / الشرط
+
+**3. الشروط المالية**
+المبالغ، جداول الدفع، العقوبات المالية.
+
+**4. بنود الإنهاء والخروج**
+متى ولماذا يمكن إنهاء العقد؟ ما العواقب؟
+
+**5. البنود التي تستحق مراجعة متأنية** ⚠️
+أي بنود غير واضحة أو تبدو مُجحِفة أو تحتاج توضيحاً؟
+
+**6. ما الغائب؟**
+بنود شائعة في عقود مماثلة لا تظهر في هذا العقد.
+
+تنبيه: هذا تحليل أولي وليس رأياً قانونياً.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#04</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-red">كود</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">مراجعة كود برمجي ومقترحات التحسين</div>
+          <div class="prompt-desc">ارفع ملف الكود وطلب مراجعة شاملة.</div>
+          <div class="prompt-body">راجع هذا الكود البرمجي مراجعةً شاملة:
+
+**1. ملخص الوظيفة**
+ماذا يفعل هذا الكود؟ (شرح لغير المبرمجين)
+
+**2. مشاكل الجودة** 🔴
+قائمة بكل bug أو خطأ محتمل مع رقم السطر.
+
+**3. ثغرات الأمان** 🛡️
+أي نقاط ضعف أمنية (SQL injection, XSS, etc.)
+
+**4. مشاكل الأداء** ⚡
+كود بطيء يمكن تحسينه، حلقات غير ضرورية، ذاكرة مهدرة.
+
+**5. جودة الكود** 📖
+- هل الأسماء وصفية وواضحة؟
+- هل الكود يتبع مبادئ DRY و SOLID؟
+- هل هناك كود مكرر يمكن دمجه؟
+
+**6. الكود المُحسَّن**
+اكتب النسخة المُحسَّنة لأهم جزء يحتاج تغييراً.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#05</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-orange">مقارنة ملفات</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">مقارنة وثيقتين واكتشاف الفروق</div>
+          <div class="prompt-desc">ارفع الملفين معاً لتحليل مقارن دقيق.</div>
+          <div class="prompt-body">قارن بين الملفين المرفقَين (ملف 1 وملف 2) وقدّم:
+
+**ملخص الاختلافات الرئيسية**
+ما التغيّرات الجوهرية بين الوثيقتين؟
+
+**جدول المقارنة التفصيلي**
+| الجانب | الملف 1 | الملف 2 | التغيير |
+
+**الإضافات الجديدة في الملف 2**
+ما الموجود في الملف 2 ولم يكن في الملف 1؟
+
+**ما حُذف من الملف 1**
+ما الموجود في الملف 1 واختفى من الملف 2؟
+
+**التغييرات التي تستحق الانتباه** ⚠️
+أي تغييرات يمكن أن يكون لها أثر كبير؟
+
+**التوصية**
+أيّ الملفين أفضل؟ ولماذا؟ أو: هل يُنصح بدمجهما؟</div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════ PAGE: CODE ════════════════════════════════ -->
+    <div class="page" id="page-code">
+      <div class="page-header">
+        <div class="page-icon purple">⚙️</div>
+        <div class="page-header-text">
+          <h2>تنفيذ الكود — Code Execution</h2>
+          <p>ميزة فريدة تُتيح للنموذج كتابة كود Python وتنفيذه ضمن حلقة الاستدلال ذاتها، مما يُمكّنه من حل المسائل الرياضية، معالجة البيانات، وإنشاء الرسوم البيانية بشكل فعلي.</p>
+        </div>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-label">اللغة المدعومة</div>
+          <div class="info-card-val">Python 3.x</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">المكتبات المتاحة</div>
+          <div class="info-card-val">pandas, numpy, matplotlib</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">الإخراج</div>
+          <div class="info-card-val">نص + صور + ملفات</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">التكرار الذاتي</div>
+          <div class="info-card-val">يُصلح الكود تلقائياً</div>
+        </div>
+      </div>
+
+      <div class="tip-box green">
+        <span class="tip-icon">⚡</span>
+        <span>فعّل "Code Execution" من إعدادات الأدوات قبل إرسال البروميبت. يستطيع النموذج تصحيح كوده تلقائياً إذا أخطأ وإعادة التشغيل.</span>
+      </div>
+
+      <div class="section-title">📋 بروميبتات جاهزة للنسخ والتشغيل</div>
+
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#01</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-purple">رياضيات</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">حل مسألة رياضية مع تفسير الخطوات</div>
+          <div class="prompt-desc">اكتب كود يحل المسألة ويُظهر خطوات الحل.</div>
+          <div class="prompt-body">اكتب كود Python يحل المسألة التالية ويُفسّر كل خطوة:
+
+المسألة: [صِف المسألة الرياضية هنا]
+مثال: "أوجد قيمة x في المعادلة: 3x² - 7x + 2 = 0"
+
+المطلوب في الكود:
+1. حل المسألة خطوة بخطوة مع طباعة كل خطوة
+2. التحقق من صحة الحل بالتعويض
+3. رسم الدالة (إن أمكن) باستخدام matplotlib
+4. طباعة الحل النهائي بشكل واضح
+
+اشرح لي ما يفعله الكود قبل تشغيله.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#02</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-blue">تحليل بيانات</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تحليل بيانات المبيعات ورسمها</div>
+          <div class="prompt-desc">أنشئ بيانات مبيعات افتراضية وحلّلها بصرياً.</div>
+          <div class="prompt-body">اكتب كود Python يقوم بـ:
+
+1. **إنشاء بيانات مبيعات افتراضية** لسنة كاملة (12 شهراً):
+   - أعمدة: الشهر، مبيعات_المنتج_A، مبيعات_المنتج_B، عدد_العملاء، نسبة_التحويل
+   - اجعل البيانات واقعية مع ذروة موسمية في رمضان وديسمبر
+
+2. **التحليل الإحصائي:**
+   - الشهر الأعلى والأدنى مبيعاً لكل منتج
+   - معدل النمو الشهري وإجمالي النمو السنوي
+   - ارتباط Pearson بين المتغيرات
+
+3. **الرسوم البيانية (3 رسوم في لوحة واحدة):**
+   - خط المبيعات الشهرية مقارناً للمنتجَين
+   - مخطط عمودي لعدد العملاء شهرياً
+   - Scatter plot للعلاقة بين المبيعات ونسبة التحويل
+
+4. **الخلاصة:** طباعة 5 نتائج رئيسية بالعربية</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#03</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-green">أتمتة</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">أتمتة معالجة نصوص بكميات كبيرة</div>
+          <div class="prompt-desc">معالجة قوائم البيانات النصية تلقائياً.</div>
+          <div class="prompt-body">اكتب كود Python يعالج قائمة النصوص التالية:
+
+texts = [
+    "I love this product! Best purchase ever.",
+    "Terrible quality, waste of money",
+    "Good value for the price, recommended",
+    "Not satisfied, expected better",
+    "Amazing customer service, will buy again"
+]
+
+المطلوب:
+1. تنظيف النصوص (إزالة علامات الترقيم، التصغير)
+2. تحليل المشاعر البسيط (إيجابي/سلبي/محايد) بناءً على كلمات مفتاحية
+3. حساب: عدد الكلمات، الجمل، نسبة الإيجابية
+4. ترتيب النصوص من الأكثر إيجابية للأقل
+5. إخراج تقرير مُلخَّص في نهاية الكود
+
+اجعل الكود قابلاً لإضافة نصوص جديدة بسهولة.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#04</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-red">خوارزمية</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تنفيذ وتصوير خوارزمية الفرز</div>
+          <div class="prompt-desc">تعلّم الخوارزميات بتصوير خطواتها بصرياً.</div>
+          <div class="prompt-body">اكتب كود Python يُطبّق ويُصوّر خوارزمية Merge Sort:
+
+المتطلبات:
+1. نفّذ خوارزمية Merge Sort من الصفر
+2. أضف طباعة مرحلية تُظهر كيف تتم عملية الدمج خطوة بخطوة
+3. قارنها بـ Bubble Sort على نفس البيانات:
+   - قس وقت التنفيذ لكلٍ منهما
+   - اختبر على: [10, 1000, 10000] عنصر عشوائي
+4. ارسم رسماً بيانياً يُظهر الفرق في الوقت مع زيادة البيانات
+5. احسب التعقيد الزمني الفعلي (O notation) وقارنه بالنظري
+
+اشرح لماذا Merge Sort أسرع من Bubble Sort.</div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════ PAGE: FUNCTIONS ════════════════════════════════ -->
+    <div class="page" id="page-functions">
+      <div class="page-header">
+        <div class="page-icon orange">🔗</div>
+        <div class="page-header-text">
+          <h2>Function Calling — استدعاء الوظائف الخارجية</h2>
+          <p>تُمكّن هذه الميزة النموذج من استدعاء أدوات وواجهات API خارجية بذكاء، مما يربطه بالعالم الحقيقي. النموذج يُقرّر متى وكيف يستخدم الأداة بناءً على سياق المحادثة.</p>
+        </div>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-label">النمط</div>
+          <div class="info-card-val">Auto / Any / None</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">عدد الأدوات</div>
+          <div class="info-card-val">متعددة في طلب واحد</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">الاستجابة المتوازية</div>
+          <div class="info-card-val">Parallel calls مدعوم</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">دورة الاستدعاء</div>
+          <div class="info-card-val">Multi-turn supported</div>
+        </div>
+      </div>
+
+      <div class="section-title">📋 بروميبتات جاهزة للنسخ والتشغيل</div>
+
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#01</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-orange">تعريف أداة</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تعريف أداة بحث بسيطة</div>
+          <div class="prompt-desc">هيكل JSON لتعريف أداة Function Calling.</div>
+          <div class="prompt-body">{
+  "name": "search_products",
+  "description": "ابحث في قاعدة بيانات المنتجات بناءً على معايير محددة. استخدم هذه الأداة عندما يسأل المستخدم عن منتج معين أو يريد المقارنة بين منتجات.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "اسم المنتج أو الكلمة المفتاحية للبحث"
+      },
+      "category": {
+        "type": "string",
+        "enum": ["electronics", "clothing", "food", "all"],
+        "description": "تصفية حسب الفئة"
+      },
+      "max_price": {
+        "type": "number",
+        "description": "الحد الأقصى للسعر بالريال"
+      },
+      "in_stock_only": {
+        "type": "boolean",
+        "description": "true لإظهار المتوفر فقط"
+      }
+    },
+    "required": ["query"]
+  }
+}</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#02</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-blue">System Prompt</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">System Instruction لمساعد أدوات متعددة</div>
+          <div class="prompt-desc">تعليمات النظام لنموذج يعمل مع أدوات متعددة.</div>
+          <div class="prompt-body">أنت مساعد ذكي لخدمة عملاء متجر إلكتروني. لديك الأدوات التالية:
+- search_products: للبحث عن المنتجات
+- check_order_status: للاستعلام عن حالة طلب
+- get_customer_info: للحصول على بيانات العميل
+- create_ticket: لإنشاء تذكرة دعم
+
+قواعد استخدام الأدوات:
+1. إذا طُلب منك معلومة قد تتوفر من أداة — استخدم الأداة أولاً قبل الإجابة
+2. إذا احتجت أدوات متعددة — استخدمها بالترتيب المنطقي
+3. إذا فشلت الأداة — أخبر المستخدم بلطف واقترح بديلاً
+4. لا تخترع بيانات أو تُخمّن نتائج الأدوات
+5. بعد الحصول على نتيجة الأداة، لخّصها للمستخدم بلغة بسيطة
+
+نبرة التواصل: ودية، احترافية، إيجابية دائماً.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#03</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-purple">متوازي</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">استدعاء أدوات متوازية في طلب واحد</div>
+          <div class="prompt-desc">مثال لتنفيذ استدعاءات متعددة بالتوازي.</div>
+          <div class="prompt-body">// مثال على كيفية تعريف أدوات متوازية في AI Studio
+// ضَع هذا في System Instructions:
+
+لديك 4 أدوات:
+1. get_weather(city) — الطقس الحالي
+2. get_exchange_rate(from, to) — أسعار الصرف
+3. get_news(topic, count) — آخر الأخبار
+4. get_prayer_times(city, date) — مواقيت الصلاة
+
+عندما يطلب المستخدم "لوحة الصباح اليومية":
+استخدم الأدوات الأربعة في وقت واحد (parallel):
+- الطقس لمدينة المستخدم
+- سعر الدولار والذهب
+- 3 أخبار رئيسية
+- مواقيت صلاة اليوم
+
+ثم اعرض النتائج في تنسيق لوحة منظمة وجميلة.
+
+---
+[رسالة المستخدم لاختبار هذا:]
+أريد لوحتي الصباحية ليوم الأحد في الرياض.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#04</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-red">تصميم</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تصميم نظام أدوات لـ Agent متكامل</div>
+          <div class="prompt-desc">صمّم مجموعة أدوات لـ AI Agent بمواصفات محددة.</div>
+          <div class="prompt-body">أريدك أن تُصمّم مجموعة أدوات Function Calling لـ AI Agent متخصص في:
+[وصف مهمة الـ Agent، مثلاً: "إدارة تقويم الأعمال وجدولة الاجتماعات"]
+
+لكل أداة، قدّم:
+1. الاسم (snake_case)
+2. وصفاً دقيقاً يُساعد النموذج على اختيار متى يستخدمها
+3. المعاملات (parameters) بنوع بياناتها وهل هي مطلوبة
+4. مثالاً على مدخلات وخرجات محتملة
+5. حالات الخطأ الشائعة وكيف يجب التعامل معها
+
+ثم: اكتب System Instruction للـ Agent يُوضّح:
+- متى يختار كل أداة
+- الترتيب المنطقي لاستخدام الأدوات معاً
+- كيف يتعامل مع إخفاق الأداة
+
+الإخراج: JSON كامل جاهز للاستخدام في AI Studio.</div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════════════ PAGE: GROUNDING ════════════════════════════════ -->
+    <div class="page" id="page-grounding">
+      <div class="page-header">
+        <div class="page-icon teal">🌐</div>
+        <div class="page-header-text">
+          <h2>Grounding — البحث في الويب الحقيقي</h2>
+          <p>تربط ميزة Grounding النموذج ببحث Google الحقيقي، مما يُتيح له الإجابة بمعلومات محدّثة لحظة بلحظة، مع ذكر المصادر. الأنسب للأخبار، الأسعار، والمعلومات المتغيرة.</p>
+        </div>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-label">مصدر البيانات</div>
+          <div class="info-card-val">Google Search مباشر</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">المصادر</div>
+          <div class="info-card-val">تُذكَر مع الإجابة</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">طريقة التفعيل</div>
+          <div class="info-card-val">Dynamic retrieval</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">التكلفة الإضافية</div>
+          <div class="info-card-val">مُتاح في المستوى المجاني</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <span class="tip-icon">🔍</span>
+        <span>فعّل "Grounding with Google Search" من قسم Tools في واجهة AI Studio. يُضاف تلقائياً للطلبات التي يحتاج فيها النموذج لمعلومات حديثة.</span>
+      </div>
+
+      <div class="section-title">📋 بروميبتات جاهزة للنسخ والتشغيل</div>
+
+      <div class="prompts-grid">
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#01</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-blue">أخبار</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">ملخص أخبار الموضوع الحالية</div>
+          <div class="prompt-desc">احصل على ملخص محدّث لأي موضوع مع المصادر.</div>
+          <div class="prompt-body">ابحث الآن عن آخر الأخبار المتعلقة بـ [الموضوع] خلال الـ 7 أيام الماضية.
+
+قدّم:
+**1. ملخص الوضع الحالي** (فقرة واحدة تصف آخر مستجد)
+
+**2. التطورات الرئيسية** (مرتّبة من الأحدث للأقدم)
+- [التاريخ]: الحدث — والمصدر
+
+**3. أبرز التصريحات الرسمية** (إن وجدت)
+
+**4. تحليل سريع**
+ما المتوقع في الأيام القادمة بناءً على هذه المعطيات؟
+
+**5. المصادر الموثوقة التي تنصح بمتابعتها**
+
+تنبيه: استخدم بحث Google للحصول على معلومات محدّثة حقيقية.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#02</span>
+              <span class="prompt-level level-beginner">مبتدئ</span>
+              <span class="badge badge-green">أسعار</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">مقارنة أسعار المنتجات في السوق</div>
+          <div class="prompt-desc">ابحث عن أسعار حالية لأي منتج واقارن بين المتاجر.</div>
+          <div class="prompt-body">ابحث في الويب الآن عن أسعار [اسم المنتج] في السوق السعودي / الإماراتي.
+
+المطلوب:
+1. **نطاق السعر الحالي** (الأدنى — الأعلى) بالريال / الدرهم
+2. **مقارنة المتاجر الكبرى:**
+   | المتجر | السعر | ملاحظة |
+   (Amazon.sa, Noon, Jarir, Extra, iStyle, ...)
+
+3. **أفضل صفقة حالية** مع رابط المصدر
+4. **مقارنة بالسعر العالمي** — هل أسعارنا منافسة؟
+5. **توقع تغيّر السعر** — هل هناك تخفيضات قادمة أو إطلاق منتج جديد؟
+
+البيانات يجب أن تكون من نتائج بحث حقيقية وحديثة.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#03</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-purple">بحث تنافسي</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تحليل تنافسي لشركة أو منتج</div>
+          <div class="prompt-desc">أداة قوية للباحثين في السوق ورجال الأعمال.</div>
+          <div class="prompt-body">ابحث في الويب الآن عن معلومات محدّثة لإجراء تحليل تنافسي لـ [اسم الشركة / المنتج]:
+
+**1. الوضع الحالي في السوق**
+الحصة السوقية، التقييمات، الحضور الرقمي.
+
+**2. آخر الأخبار والإعلانات** (آخر 30 يوماً)
+إطلاقات جديدة، شراكات، استثمارات، أخبار سلبية.
+
+**3. ما يقوله العملاء** (مراجعات حديثة)
+أبرز نقاط الرضا والشكاوى الأكثر تكراراً.
+
+**4. المقارنة مع أبرز منافس**
+جدول مقارنة بأهم 5 عوامل تنافسية.
+
+**5. الفرص والتهديدات** الظاهرة من البيانات الحالية
+
+قدّم مصادر كل نقطة معلوماتية.</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#04</span>
+              <span class="prompt-level level-medium">متوسط</span>
+              <span class="badge badge-orange">بحث أكاديمي</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">بحث عن دراسات ومصادر أكاديمية حديثة</div>
+          <div class="prompt-desc">ابحث عن دراسات وبيانات علمية لدعم حججك.</div>
+          <div class="prompt-body">ابحث في الويب الآن عن دراسات وأبحاث علمية حول: [الموضوع]
+التركيز على: الدراسات الصادرة بين [السنة] و [السنة]
+
+المطلوب:
+1. **أبرز 5 دراسات** مع:
+   - الاسم الكامل للدراسة
+   - الباحثون والمؤسسة
+   - سنة النشر
+   - الاستنتاج الرئيسي (جملة واحدة)
+   - رابط المصدر (إن أمكن)
+
+2. **الإجماع العلمي الحالي**
+ما تقوله معظم الدراسات الحديثة حول هذا الموضوع؟
+
+3. **الخلافات العلمية** (إن وجدت)
+أين يختلف الباحثون وما نقاط الجدل؟
+
+4. **الفجوات البحثية**
+ما لم تُجب عنه الأبحاث الحالية بشكل كافٍ؟</div>
+        </div>
+
+        <div class="prompt-card">
+          <div class="prompt-card-header">
+            <div class="prompt-meta">
+              <span class="prompt-num">#05</span>
+              <span class="prompt-level level-advanced">متقدم</span>
+              <span class="badge badge-red">تقرير بحثي</span>
+            </div>
+            <button class="copy-btn" onclick="copyPrompt(this)">⧉ نسخ البروميبت</button>
+          </div>
+          <div class="prompt-title">تقرير صناعي شامل مع بيانات حية</div>
+          <div class="prompt-desc">تقرير متكامل يجمع أحدث بيانات الصناعة.</div>
+          <div class="prompt-body">ابحث في الويب الآن وأنشئ تقريراً شاملاً عن قطاع [اسم القطاع]:
+
+**المقدمة التنفيذية** (200 كلمة)
+الحالة الراهنة للصناعة وأبرز المستجدات.
+
+**حجم السوق والنمو**
+أحدث الأرقام المتاحة مع المصادر.
+
+**أبرز اللاعبين**
+الشركات الرائدة عالمياً وإقليمياً مع حصصهم السوقية.
+
+**الاتجاهات الكبرى لعام [السنة الحالية]**
+التقنيات، التغييرات السلوكية، اللوائح الجديدة.
+
+**التحديات الرئيسية للقطاع**
+
+**توقعات 3 سنوات قادمة**
+بناءً على تقارير المحللين الحديثة.
+
+**فرص الدخول والاستثمار**
+أين المساحة البيضاء في هذا القطاع الآن؟
+
+كل إحصائية يجب أن تكون مصحوبة بمصدرها وتاريخ بياناتها.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </main><!-- /main-content -->
+</div><!-- /layout -->
+
+<!-- TOAST -->
+<div id="toast">✓ تم نسخ البروميبت!</div>
+
+<script>
+  // ── PAGE SWITCHING ──
+  function switchPage(pageId, navEl) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const pg = document.getElementById('page-' + pageId);
+    if (pg) pg.classList.add('active');
+    if (navEl) navEl.classList.add('active');
+    document.querySelector('.main-content').scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── COPY PROMPT ──
+  function copyPrompt(btn) {
+    const card = btn.closest('.prompt-card');
+    const body = card.querySelector('.prompt-body');
+    const text = body ? body.innerText.trim() : '';
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = '✓ تم النسخ!';
+      btn.classList.add('copied');
+      showToast();
+      setTimeout(() => {
+        btn.textContent = '⧉ نسخ البروميبت';
+        btn.classList.remove('copied');
+      }, 2000);
+    }).catch(() => {
+      // Fallback
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.textContent = '✓ تم النسخ!';
+      btn.classList.add('copied');
+      showToast();
+      setTimeout(() => {
+        btn.textContent = '⧉ نسخ البروميبت';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+
+  function showToast() {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2200);
+  }
+
+  // ── KEYBOARD NAV ──
+  document.addEventListener('keydown', e => {
+    const pages = ['prompt','chat','image','video','audio','files','code','functions','grounding'];
+    const active = document.querySelector('.nav-item.active');
+    const items = Array.from(document.querySelectorAll('.nav-item'));
+    const idx = items.indexOf(active);
+    if (e.key === 'ArrowDown' && idx < items.length - 1) {
+      items[idx + 1].click();
+    } else if (e.key === 'ArrowUp' && idx > 0) {
+      items[idx - 1].click();
+    }
+  });
+</script>
+</body>
+</html>
